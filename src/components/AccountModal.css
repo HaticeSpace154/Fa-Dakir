@@ -1,0 +1,71 @@
+.account-overlay { position: fixed; inset: 0; z-index: 1200; display: grid; place-items: center; padding: 18px; background: rgba(0,0,0,.58); backdrop-filter: blur(8px); }
+.account-dialog { width: min(100%, 520px); max-height: min(90vh, 760px); overflow: auto; border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent); border-radius: 24px; background: #fbfaf7; color: #27251f; box-shadow: 0 24px 80px rgba(0,0,0,.35); }
+[data-theme="dark"] .account-dialog { background: #171719; color: #efeee9; }
+.account-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 22px; border-bottom:1px solid color-mix(in srgb, var(--gold) 18%, transparent); }
+.account-eyebrow { color:#b18d22; font-size:12px; font-weight:700; }
+.account-header h2 { margin:5px 0 0; font-size:20px; }
+.account-close { display:grid; place-items:center; width:36px; height:36px; border:0; border-radius:12px; background:rgba(127,127,127,.1); color:inherit; cursor:pointer; }
+.account-body { padding:20px 22px 24px; }
+.account-tabs { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:4px; border-radius:14px; background:rgba(127,127,127,.1); }
+.account-tabs button { display:flex; justify-content:center; align-items:center; gap:7px; border:0; border-radius:11px; padding:10px 6px; background:transparent; color:inherit; font:inherit; cursor:pointer; }
+.account-tabs button.is-active { background:var(--gold); color:#171511; font-weight:700; }
+.account-form { display:grid; gap:13px; margin-top:18px; }
+.account-form label { display:grid; gap:6px; font-size:13px; font-weight:650; }
+.account-form input { width:100%; box-sizing:border-box; border:1px solid color-mix(in srgb, var(--gold) 30%, transparent); border-radius:11px; padding:11px 12px; background:rgba(127,127,127,.08); color:inherit; font:inherit; outline:none; }
+.account-form input:focus { border-color:var(--gold); box-shadow:0 0 0 3px color-mix(in srgb, var(--gold) 14%, transparent); }
+.account-google-auth { display:grid; gap:12px; margin-top:18px; text-align:center; }
+.account-google-auth p { margin:0; color:#8b887f; font-size:13px; line-height:1.7; }
+.account-google-auth .account-primary { width:100%; min-height:48px; }
+.account-policy-consent { display:flex !important; grid-template-columns:auto minmax(0,1fr) !important; align-items:flex-start; gap:9px !important; color:inherit; font-size:12px !important; line-height:1.7; text-align:right; cursor:pointer; }
+.account-policy-consent input { width:17px; height:17px; flex:0 0 17px; margin:2px 0 0; accent-color:var(--gold); cursor:pointer; }
+.account-policy-consent a { color:var(--gold); text-decoration:underline; text-underline-offset:3px; }
+.account-google-auth .account-primary:disabled { cursor:not-allowed; }
+.account-confirm-overlay { background:rgba(0,0,0,.36); backdrop-filter:blur(4px); }
+.account-confirm-dialog { width:min(100%,420px); padding:20px; border:1px solid color-mix(in srgb, var(--gold) 32%, transparent); border-radius:18px; background:#fbfaf7; color:#27251f; box-shadow:0 20px 70px rgba(0,0,0,.3); }
+.account-confirm-dialog h3 { margin:0 0 8px; font-size:17px; }
+.account-confirm-dialog p { margin:0; color:#787367; font-size:13px; line-height:1.7; }
+.account-confirm-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:18px; }
+.account-confirm-actions .is-destructive { background:#b84137; border-color:#b84137; color:white; }
+[data-theme="dark"] .account-confirm-dialog { background:#171719; color:#efeee9; }
+[data-theme="dark"] .account-confirm-dialog p { color:#aaa394; }
+.account-user-card { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; padding:13px 14px; border:1px solid color-mix(in srgb, var(--gold) 25%, transparent); border-radius:14px; background:linear-gradient(110deg,color-mix(in srgb, var(--gold) 10%, transparent),rgba(127,127,127,.04)); }
+.account-user-card > div { display:grid; gap:4px; min-width:0; }
+.account-user-card strong { overflow:hidden; text-overflow:ellipsis; direction:ltr; text-align:right; font-size:13px; }
+.account-user-card small { color:#8b887f; font-size:11px; }
+.account-signout { display:inline-flex; align-items:center; gap:5px; flex:0 0 auto; }
+.account-delete-btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; margin-top:8px; padding:8px 10px; border:1px solid rgba(196,72,64,.25); border-radius:10px; background:rgba(196,72,64,.045); color:#ad453d; font:inherit; font-size:11px; cursor:pointer; }
+.account-delete-btn:hover { background:rgba(196,72,64,.1); }
+.account-delete-btn:disabled { opacity:.6; cursor:wait; }
+.account-primary,.account-secondary { border:1px solid color-mix(in srgb, var(--gold) 42%, transparent); border-radius:12px; padding:10px 14px; color:#211d0d; background:var(--gold); font:inherit; font-weight:700; cursor:pointer; }
+.account-primary { display:inline-flex; align-items:center; justify-content:center; gap:6px; }
+.account-secondary { background:transparent; color:inherit; }
+.account-primary:disabled,.account-secondary:disabled { opacity:.6; cursor:wait; }
+.account-link-button { justify-self:start; border:0; padding:2px 0; background:transparent; color:#a68118; font:inherit; font-size:12px; cursor:pointer; }
+.account-link-button:disabled { opacity:.6; cursor:wait; }
+.account-hint { margin:2px 0 0; color:#8b887f; font-size:12px; line-height:1.7; }
+.account-hint code { direction:ltr; display:inline-block; color:#a68118; }
+.account-separator { display:flex; align-items:center; gap:12px; margin:22px 0 14px; color:#918d83; font-size:12px; }
+.account-separator::before,.account-separator::after { content:""; flex:1; height:1px; background:rgba(127,127,127,.2); }
+.drive-card { position:relative; overflow:hidden; padding:18px; border:1px solid color-mix(in srgb, var(--gold) 27%, transparent); border-radius:19px; background:linear-gradient(145deg,color-mix(in srgb, var(--gold) 8%, transparent),rgba(255,255,255,.52) 64%); box-shadow:0 8px 24px rgba(103,83,32,.045); }
+.drive-card::before { content:""; position:absolute; inset:0 auto 0 0; width:3px; background:linear-gradient(180deg,#e2c653,#b18d22); opacity:.7; }
+.drive-card-head { display:flex; align-items:center; gap:11px; }
+.drive-icon-wrap { display:grid; place-items:center; width:42px; height:42px; flex:0 0 42px; border:1px solid color-mix(in srgb, var(--gold) 25%, transparent); border-radius:14px; background:color-mix(in srgb, var(--gold) 12%, transparent); color:#ac8615; }
+.drive-copy { display:grid; min-width:0; flex:1; gap:4px; color:#a27d12; }
+.drive-copy strong { font-size:14px; line-height:1.5; }
+.drive-copy small { color:#8c877a; font-size:11px; line-height:1.6; }
+.drive-status { display:inline-flex; align-items:center; gap:4px; flex:0 0 auto; padding:5px 8px; border:1px solid rgba(125,111,76,.18); border-radius:999px; color:#898474; font-size:10px; white-space:nowrap; }
+.drive-status.is-connected { border-color:rgba(40,160,92,.2); background:rgba(40,160,92,.08); color:#25834d; }
+.drive-actions { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin:16px 0 2px; }
+.drive-action { min-height:46px; display:flex; align-items:center; justify-content:center; gap:8px; padding:9px 11px; font-size:12px; }
+.drive-restore-action { grid-column:auto; min-height:46px; border-color:color-mix(in srgb, var(--gold) 24%, transparent); color:#8e711d; }
+[data-theme="dark"] .drive-card { border-color:color-mix(in srgb, var(--gold) 20%, transparent); background:linear-gradient(145deg,color-mix(in srgb, var(--gold) 10%, transparent),rgba(255,255,255,.025) 70%); box-shadow:none; }
+[data-theme="dark"] .drive-copy small { color:#aaa394; }
+[data-theme="dark"] .drive-status { border-color:color-mix(in srgb, var(--gold) 19%, transparent); color:#b9b19e; }
+[data-theme="dark"] .drive-restore-action { color:#e0c56a; }
+.account-message { margin:14px 0 0; padding:10px 12px; border-radius:11px; background:rgba(214,80,64,.1); color:#c74f42; font-size:13px; line-height:1.6; }
+.account-message.is-success { background:rgba(40,160,92,.12); color:#25834d; }
+.account-legal-links { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; margin-top:18px; color:#918d83; font-size:11px; }
+.account-legal-links a { color:#92721c; text-decoration:underline; text-underline-offset:3px; }
+[data-theme="dark"] .account-delete-btn { border-color:rgba(235,117,101,.22); background:rgba(235,117,101,.07); color:#ef9b8f; }
+[data-theme="dark"] .account-legal-links a { color:#e0c56a; }
+@media(max-width:520px) { .account-overlay { padding:10px; } .account-header,.account-body { padding-left:16px; padding-right:16px; } .account-header h2 { font-size:17px; } .drive-card { padding:14px; } .drive-icon-wrap { width:38px; height:38px; flex-basis:38px; } .drive-status { padding:4px 6px; font-size:9px; } .drive-action { min-height:43px; padding:8px 7px; font-size:11px; } }

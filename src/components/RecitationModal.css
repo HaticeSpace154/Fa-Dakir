@@ -1,0 +1,20 @@
+.recitation-overlay { position: fixed; inset: 0; z-index: 1200; display: grid; place-items: center; padding: 18px; background: rgba(13,12,10,.54); backdrop-filter: blur(7px); animation: fadeIn .18s ease; }
+.recitation-dialog { width: min(100%, 430px); max-height: min(82vh, 650px); overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; -ms-overflow-style: none; padding: 20px; border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent); border-radius: 22px; background: var(--card-bg, #fbf8f0); color: var(--ink, #343027); box-shadow: 0 24px 70px rgba(0,0,0,.28); animation: scaleUp .22s ease; }
+.recitation-dialog::-webkit-scrollbar { display: none; }
+.recitation-head, .recitation-head > div { display: flex; align-items: center; }
+.recitation-head { justify-content: space-between; gap: 12px; }
+.recitation-head > div { gap: 9px; color: var(--gold, #b18d22); }
+.recitation-head h2 { margin: 0; color: inherit; font-size: 17px; }
+.recitation-head > button { display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: color-mix(in srgb, var(--ink) 60%, transparent); cursor: pointer; }
+.recitation-head > button:hover { background: color-mix(in srgb, var(--gold) 12%, transparent); }
+.recitation-intro { margin: 12px 0 15px; color: color-mix(in srgb, var(--ink) 64%, transparent); font-size: 12px; line-height: 1.8; }
+.recitation-options { display: grid; gap: 8px; }
+.recitation-option { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 11px 12px; border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); border-radius: 13px; background: color-mix(in srgb, var(--card-bg, #fff) 77%, transparent); color: inherit; text-align: right; font: inherit; cursor: pointer; transition: background .18s ease, border-color .18s ease, transform .18s ease; }
+.recitation-option:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--gold) 52%, transparent); }
+.recitation-option.is-selected { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 18%, var(--card-bg, #fff)); }
+.recitation-option-copy { display: grid; gap: 3px; }
+.recitation-option-copy strong { font-size: 13px; }
+.recitation-option-copy small { color: color-mix(in srgb, var(--ink) 55%, transparent); font-size: 10px; }
+.recitation-option-check { display: grid; place-items: center; flex: 0 0 25px; width: 25px; height: 25px; border: 1px solid color-mix(in srgb, var(--ink) 22%, transparent); border-radius: 50%; color: var(--gold); }
+.recitation-option.is-selected .recitation-option-check { border-color: var(--gold); background: var(--gold); color: var(--shell-bg, #211b0a); }
+.recitation-source-note { display: block; margin-top: 13px; color: color-mix(in srgb, var(--ink) 55%, transparent); font-size: 10px; line-height: 1.7; }

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f9f6f0" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" type="image/jpeg" href="/branding/logo.jfif" />
+    <link rel="alternate icon" href="/icons/icon-192.webp" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.webp" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thetruetruth/quran-data-kfgqpc@main/css/kfgqpc.font.css" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <!-- Paint the correct theme colour before React/the iframe load (same origin = shared storage),
+         so a dark-mode user never sees a light flash. The reader keeps this in sync afterwards. -->
+    <script>
+      try {
+        var m = localStorage.getItem('quranWarsh.theme');
+        var themes = { light: '#f9f6f0', sepia: '#f2e8d5', 'pigeon-blue': '#122b46', grey: '#e5e7e9', dark: '#0a0a0a', mono: '#0a0a0a' };
+        if (themes[m]) {
+          var themeName = m === 'mono' ? 'dark' : m;
+          document.documentElement.setAttribute('data-theme', themeName);
+          document.documentElement.style.setProperty('--shell-bg', themes[m]);
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', themes[m]);
+          document.querySelector('meta[name="color-scheme"]').setAttribute('content', themeName === 'dark' || themeName === 'pigeon-blue' ? 'dark' : 'light');
+        }
+      } catch (e) {}
+    </script>
+    <title>تلاوة و ختم | Fa-dakir</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

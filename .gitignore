@@ -1,0 +1,35 @@
+# Node / Vite
+node_modules/
+dist/
+dist-ssr/
+*.local
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Capacitor / Android
+android/.gradle/
+android/.gradle_user_home/
+android/build/
+android/app/build/
+android/app/release/
+android/local.properties
+android/.idea/
+android/.kotlin/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Logs & OS metadata
+*.log
+.DS_Store
+Thumbs.db
+
+# Local Claude Code data
+HOME/
+# APK archives
+apk/*.zip

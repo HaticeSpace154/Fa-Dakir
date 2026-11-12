@@ -1,0 +1,154 @@
+.search-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 16px 20px;
+  animation: fadeIn 0.22s ease;
+}
+
+.search-modal-box {
+  width: 100%;
+  max-width: 640px;
+  max-height: 82vh;
+  background: rgba(253, 251, 247, 0.96);
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+  border-radius: 26px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  animation: scaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] .search-modal-box {
+  background: rgba(20, 20, 24, 0.96);
+  border-color: color-mix(in srgb, var(--gold) 22%, transparent);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+.search-modal-head {
+  padding: 16px 20px;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 20%, transparent);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search-head-icon {
+  position: absolute;
+  right: 14px;
+  color: var(--gold);
+  pointer-events: none;
+}
+
+.search-head-input {
+  width: 100%;
+  padding: 12px 44px 12px 36px;
+  border-radius: 14px;
+  border: 1.5px solid color-mix(in srgb, var(--gold) 35%, transparent);
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+  color: inherit;
+  font-family: inherit;
+}
+
+[data-theme="dark"] .search-head-input {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.search-head-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+.search-clear-btn {
+  position: absolute;
+  left: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #888;
+}
+
+.search-modal-body {
+  padding: 16px 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.search-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #888;
+}
+
+.placeholder-icon {
+  color: var(--gold);
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+
+.results-count-banner {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-result-card {
+  padding: 12px 16px;
+}
+
+.result-card-header {
+  margin-bottom: 6px;
+}
+
+.result-surah-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+}
+
+.result-ayah-text {
+  font-family: "Amiri", "Noto Naskh Arabic", serif;
+  font-size: 19px;
+  line-height: 1.8;
+  margin: 0;
+  color: var(--ink, #222);
+}
+
+[data-theme="dark"] .result-ayah-text {
+  color: #e5dfd0;
+}

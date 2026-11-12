@@ -1,0 +1,35 @@
+.offline-quran-overlay { position: fixed; inset: 0; z-index: 1300; display: grid; place-items: center; padding: 16px; background: rgba(9,12,15,.62); backdrop-filter: blur(8px); }
+.offline-quran-dialog { width: min(100%, 520px); max-height: min(88dvh, 760px); overflow-y: auto; padding: 18px; border: 1px solid color-mix(in srgb,var(--gold) 30%,transparent); border-radius: 22px; background: var(--card-bg,#fbf8f0); color: var(--ink,#343027); box-shadow: 0 24px 72px rgba(0,0,0,.36); scrollbar-width: none; -ms-overflow-style: none; }
+.offline-quran-dialog::-webkit-scrollbar { display: none; }
+.offline-quran-header,.offline-quran-header>div { display:flex; align-items:center; }
+.offline-quran-header { justify-content:space-between; gap:12px; margin-bottom:14px; }
+.offline-quran-header>div { gap:10px; min-width:0; }
+.offline-quran-icon { display:grid; place-items:center; flex:0 0 38px; width:38px; height:38px; border-radius:13px; background:color-mix(in srgb,var(--gold) 14%,transparent); color:var(--gold); }
+.offline-quran-header h2 { margin:0; font-size:17px; }
+.offline-quran-header p { margin:3px 0 0; color:color-mix(in srgb,var(--ink) 58%,transparent); font-size:11px; }
+.offline-quran-header>button { display:grid; place-items:center; flex:0 0 34px; width:34px; height:34px; border:0; border-radius:50%; background:color-mix(in srgb,var(--ink) 6%,transparent); color:inherit; cursor:pointer; }
+.offline-quran-list { display:grid; gap:8px; }
+.offline-quran-row { position:relative; display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:62px; padding:10px 11px; overflow:hidden; border:1px solid color-mix(in srgb,var(--ink) 9%,transparent); border-radius:14px; background:color-mix(in srgb,var(--card-bg,#fff) 78%,transparent); }
+.offline-quran-row.is-selected { border-color:color-mix(in srgb,var(--gold) 60%,transparent); background:color-mix(in srgb,var(--gold) 9%,var(--card-bg,#fff)); }
+.offline-quran-row-copy { min-width:0; display:grid; gap:4px; }
+.offline-quran-row-title { display:flex; align-items:center; gap:6px; min-width:0; color:var(--ink); }
+.offline-quran-row-title>svg { flex:0 0 auto; color:var(--gold); }
+.offline-quran-row-title strong { overflow:hidden; font-size:12px; text-overflow:ellipsis; white-space:nowrap; }
+.offline-quran-row-copy small { color:color-mix(in srgb,var(--ink) 58%,transparent); font-size:10px; }
+.offline-quran-current { flex:0 0 auto; padding:2px 6px; border-radius:999px; background:color-mix(in srgb,var(--gold) 18%,transparent); color:color-mix(in srgb,var(--gold) 75%,var(--ink)); font-size:9px; }
+.offline-quran-download,.offline-quran-remove { display:inline-flex; align-items:center; justify-content:center; gap:4px; flex:0 0 auto; min-width:68px; min-height:34px; padding:0 9px; border:1px solid color-mix(in srgb,var(--gold) 25%,transparent); border-radius:10px; background:color-mix(in srgb,var(--gold) 13%,transparent); color:var(--ink); font:inherit; font-size:10px; cursor:pointer; }
+.offline-quran-download:disabled { opacity:.5; cursor:wait; }
+.offline-quran-row.is-downloaded { border-color:color-mix(in srgb,var(--gold) 24%,transparent); }
+.offline-quran-remove { min-width:54px; color:#438568; }
+.offline-quran-remove svg+svg { opacity:.7; }
+.offline-quran-progress-label { display:inline-flex; align-items:center; gap:5px; flex:0 0 auto; color:var(--gold); font-size:10px; font-variant-numeric:tabular-nums; }
+.offline-quran-spinner { animation:offline-quran-spin 1s linear infinite; }
+@keyframes offline-quran-spin { to { transform:rotate(360deg); } }
+.offline-quran-progress-track { position:absolute; inset:auto 0 0; height:3px; overflow:hidden; background:color-mix(in srgb,var(--ink) 8%,transparent); }
+.offline-quran-progress-track>span { display:block; height:100%; background:var(--gold); transition:width .2s ease; }
+.offline-quran-progress-track>span.is-indeterminate { width:36%; animation:offline-quran-progress 1.2s ease-in-out infinite alternate; }
+@keyframes offline-quran-progress { from { transform:translateX(-40%); } to { transform:translateX(200%); } }
+.offline-quran-error { margin:10px 0 0; color:#ad4939; font-size:11px; line-height:1.7; }
+.offline-quran-note { margin:13px 2px 0; color:color-mix(in srgb,var(--ink) 58%,transparent); font-size:10px; line-height:1.7; }
+@media(max-width:420px) { .offline-quran-dialog { padding:14px; border-radius:18px; }.offline-quran-row { gap:6px; padding:9px; }.offline-quran-row-title strong { font-size:11px; } }
+@media(prefers-reduced-motion:reduce) { .offline-quran-spinner,.offline-quran-progress-track>span.is-indeterminate { animation:none; } }

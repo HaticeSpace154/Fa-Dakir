@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "246668649081",
+    "project_id": "fa-dakir",
+    "storage_bucket": "fa-dakir.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246668649081:android:42c074bbdf743b607c2aa8",
+        "android_client_info": {
+          "package_name": "com.Quran.fadakir"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246668649081-voe0jr475gv26p146s0mom8vvsc6gabf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Quran.fadakir",
+            "certificate_hash": "45d965ef552eab93d3b53c736898e4dd2e45f39b"
+          }
+        },
+        {
+          "client_id": "246668649081-lkvcmj66ah4pngntqvov7h9dajgdi37u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF2nsSf4y3I5MI1x3KWi-n1LkISYlmeHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246668649081-lkvcmj66ah4pngntqvov7h9dajgdi37u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

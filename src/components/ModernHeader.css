@@ -1,0 +1,194 @@
+.modern-header {
+  position: fixed;
+  top: 14px;
+  left: 0;
+  right: 0;
+  z-index: 998;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modern-header.is-zen {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+}
+
+.header-glass-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  max-width: 900px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.12),
+              0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+  pointer-events: auto;
+}
+
+[data-theme="dark"] .header-glass-bar {
+  background: rgba(18, 18, 20, 0.8);
+  border-color: color-mix(in srgb, var(--gold) 20%, transparent);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+/* Surah Chip */
+.surah-title-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 14px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.surah-title-chip:hover {
+  background: color-mix(in srgb, var(--gold) 10%, transparent);
+  transform: scale(1.02);
+}
+
+.surah-badge-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: color-mix(in srgb, var(--gold) 16%, transparent);
+  color: var(--gold);
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+.surah-name-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.surah-name-shiny {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+/* Juz & Hizb */
+.juz-hizb-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #555;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+[data-theme="dark"] .juz-hizb-indicator {
+  color: #bbb;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.meta-icon {
+  margin-left: 4px;
+  opacity: 0.7;
+}
+
+.meta-dot {
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reading-pct-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.pct-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.action-icon-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .action-icon-btn {
+  color: #bbb;
+}
+
+.action-icon-btn:hover {
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+.action-icon-btn:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+
+.action-icon-btn.is-active {
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 16%, transparent);
+}
+
+.fullscreen-action-btn { flex: 0 0 34px; }
+
+@media (max-width: 680px) {
+  .juz-hizb-indicator {
+    display: none;
+  }
+  .modern-header {
+    top: 8px;
+    padding: 0 10px;
+  }
+  .header-glass-bar {
+    padding: 4px 10px;
+  }
+  .fullscreen-action-btn { width: 30px; flex-basis: 30px; }
+  .surah-name-shiny {
+    font-size: 14.5px;
+  }
+}
+@media (max-width: 480px) { .reading-pct-pill { display:none; }.header-actions { gap:4px; } }

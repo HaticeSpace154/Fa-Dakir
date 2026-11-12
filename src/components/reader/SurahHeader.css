@@ -1,0 +1,81 @@
+.surah-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 28px 0 20px;
+  width: 100%;
+}
+
+.surah-plaque-frame {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  padding: 10px 24px;
+  border: 2px solid color-mix(in srgb, var(--gold) 45%, transparent);
+  border-radius: 12px;
+  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gold) 12%, transparent) 0%, rgba(255, 255, 255, 0.05) 100%);
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--gold) 12%, transparent);
+  user-select: none;
+}
+
+[data-theme="dark"] .surah-plaque-frame {
+  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gold) 16%, transparent) 0%, rgba(20, 20, 24, 0.6) 100%);
+  border-color: color-mix(in srgb, var(--gold) 35%, transparent);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.plaque-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.surah-plaque-title {
+  font-family: "Amiri", "Noto Naskh Arabic", serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.surah-type-badge,
+.surah-ayahs-badge {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
+}
+
+/* Basmalah */
+.basmalah-ornament-wrap {
+  margin: 16px 0 10px;
+  text-align: center;
+}
+
+.basmalah-text {
+  font-family: "Amiri", "Noto Naskh Arabic", serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink, #1f1f1f);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .basmalah-text {
+  color: #ede6d6;
+}
+
+@media (max-width: 600px) {
+  .surah-plaque-title {
+    font-size: 21px;
+  }
+  .surah-type-badge,
+  .surah-ayahs-badge {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+  .basmalah-text {
+    font-size: 22px;
+  }
+}

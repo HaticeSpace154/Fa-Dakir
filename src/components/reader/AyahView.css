@@ -1,0 +1,67 @@
+.ayah-span {
+  display: inline;
+  font-family: "Amiri", "Noto Naskh Arabic", serif;
+  line-height: 2.2;
+  color: var(--ink, #1f1f1f);
+  cursor: default;
+  padding: 3px 2px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  word-break: break-word;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+[data-theme="dark"] .ayah-span {
+  color: #ede6d6;
+}
+
+.ayah-span:hover {
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+}
+
+.ayah-span.is-bookmarked {
+  background: color-mix(in srgb, var(--gold) 16%, transparent);
+  box-shadow: inset 0 -2px 0 rgba(184, 151, 40, 0.7);
+}
+
+/* Ayah Rosette ۝ */
+.ayah-rosette-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.ayah-rosette-wrap.is-bookmarked .rosette-symbol { color: #b18d22; }
+[data-theme="dark"] .ayah-rosette-wrap.is-bookmarked .rosette-symbol { color: #ffd65c; }
+
+.rosette-symbol {
+  font-size: 1.25em;
+  color: var(--gold);
+  font-family: serif;
+}
+
+.rosette-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.42em;
+  font-weight: 800;
+  color: #8c731f;
+  font-family: "Noto Naskh Arabic", sans-serif;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.rosette-number:hover, .rosette-number:focus-visible { filter: drop-shadow(0 0 4px color-mix(in srgb, var(--gold) 65%, transparent)); }
+
+[data-theme="dark"] .rosette-number {
+  color: #ffd700;
+}

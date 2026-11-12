@@ -1,0 +1,36 @@
+.app-splash {
+  position: fixed;
+  z-index: 5000;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  overflow: hidden;
+  background: #0A0D0E;
+  color: #f4e6bb;
+  opacity: 1;
+  transition: opacity .55s ease, visibility .55s ease;
+}
+.app-splash-glow { display: none; position: absolute; width: min(88vw, 560px); aspect-ratio: 1; border-radius: 50%; background: var(--gold); opacity: .12; filter: blur(78px); animation: splash-glow 3.4s ease-in-out infinite alternate; }
+.app-splash-emblem { position: relative; display: grid; place-items: center; width: min(82vw, 560px); aspect-ratio: 1408 / 768; border: 0; border-radius: 22px; box-shadow: none; background: transparent; overflow: hidden; animation: splash-appear 1.1s cubic-bezier(.2,.8,.2,1) both; }
+.app-splash-emblem::before, .app-splash-emblem::after { content: none; }
+.app-splash-emblem::after { inset: 27px; border-style: dashed; opacity: .45; }
+.app-splash-mark { position: relative; z-index: 2; display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: auto; filter: drop-shadow(0 8px 22px rgba(0,0,0,.3)); animation: splash-book 1.4s .15s cubic-bezier(.2,.8,.2,1) both, splash-float 3s 1.6s ease-in-out infinite; }
+.app-splash-orbit { position: absolute; z-index: 3; width: 10px; height: 10px; border-radius: 50%; background: #f4d46c; box-shadow: 0 0 16px var(--gold); }
+.app-splash-orbit-one { top: 13%; left: 24%; animation: splash-orbit 5s linear infinite; transform-origin: 88px 125px; }
+.app-splash-orbit-two { bottom: 16%; right: 17%; width: 6px; height: 6px; opacity: .7; animation: splash-orbit 7s linear infinite reverse; transform-origin: -84px -119px; }
+.app-splash-copy { display: grid; justify-items: center; gap: 8px; animation: splash-copy .8s .45s ease both; }
+.app-splash-copy strong { font-family: 'Amiri', 'Noto Naskh Arabic', serif; color: #e7c65d; font-size: clamp(28px, 7vw, 38px); font-weight: 700; letter-spacing: .03em; text-shadow: 0 2px 18px color-mix(in srgb, var(--gold) 18%, transparent); }
+.app-splash-copy span { color: rgba(244,230,187,.63); font-family: 'Amiri', 'Noto Naskh Arabic', serif; font-size: 14px; }
+.app-splash-loader { width: 42px; height: 2px; overflow: hidden; border-radius: 3px; background: rgba(222, 210, 186, .2); }
+.app-splash-loader i { display: block; width: 40%; height: 100%; border-radius: inherit; background: #ded2ba; animation: splash-loading 1.15s ease-in-out infinite; }
+@keyframes splash-appear { from { opacity: 0; transform: scale(.82) rotate(-7deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+@keyframes splash-book { from { opacity: 0; transform: translateY(16px) scale(.93); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes splash-copy { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes splash-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes splash-glow { to { opacity: .2; transform: scale(1.12); } }
+@keyframes splash-orbit { to { rotate: 360deg; } }
+@keyframes splash-loading { 0% { transform: translateX(135%); } 100% { transform: translateX(-260%); } }
+@media (prefers-reduced-motion: reduce) { .app-splash *, .app-splash::before { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">تلاوة و ختم | Fa-dakir</string>
+    <string name="title_activity_main">تلاوة و ختم | Fa-dakir</string>
+    <string name="no_webview_text">This app requires a WebView to work</string>
+</resources>

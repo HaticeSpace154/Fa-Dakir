@@ -1,0 +1,628 @@
+/* Local Amiri Quranic Fonts */
+@font-face {
+  font-family: 'AalMaghribi';
+  src: url('/fonts/aal-maghribi.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'bazzi7';
+  src: url('/fonts/bazzi-7.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'soosi9';
+  src: url('/fonts/soosi-9.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Amiri';
+  src: url('/fonts/amiri-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Amiri';
+  src: url('/fonts/amiri-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Amiri';
+  src: url('/fonts/amiri-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Global Reset & Theme Tokens */
+:root {
+  color-scheme: light;
+  --shell-bg: #f9f6f0;
+  --ink: #1f1f1f;
+  --gold: #d4af37;
+  --gold-glow: color-mix(in srgb, var(--gold) 25%, transparent);
+  --card-bg: rgba(255, 255, 255, 0.72);
+}
+
+[data-theme='dark'] {
+  --shell-bg: #0a0a0c;
+  --ink: #ede6d6;
+  --gold: #e5c358;
+  --gold-glow: color-mix(in srgb, var(--gold) 18%, transparent);
+  --card-bg: rgba(24, 24, 28, 0.75);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--shell-bg, #f9f6f0);
+  font-family: "Noto Naskh Arabic", "Amiri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--shell-bg, #f9f6f0);
+  color: var(--ink, #1f1f1f);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* The app owns its theme; do not let the phone's automatic dark-mode tint override it. */
+html[data-theme='light'], html[data-theme='sepia'] { color-scheme: light; }
+html[data-theme='dark'] { color-scheme: dark; }
+
+#root, #root * {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root input, #root textarea, #root [contenteditable='true'] {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/*
+.quran-pure-app.is-full-mode {
+  position: fixed !important;
+  inset: 0;
+  z-index: 1200;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+}
+
+*/
+
+.quran-pure-app.is-full-mode {
+  position: fixed !important;
+  inset: 0;
+  z-index: 1200;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+}
+
+.quran-pure-app.is-full-mode.is-native-app .modern-header,
+.quran-pure-app.is-full-mode.is-native-app .floating-dock-wrapper {
+  display: block !important;
+}
+
+/* React Bits ambient treatment shared by every reader panel and navigation surface. */
+@property --reactbits-surface-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes reactbits-surface-orbit { to { --reactbits-surface-angle: 360deg; } }
+.reactbits-ambient-surface {
+  position: relative;
+  isolation: isolate;
+}
+.reactbits-ambient-surface::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--reactbits-surface-angle), color-mix(in srgb, var(--gold) 8%, transparent), rgba(233,203,112,.78), rgba(104,151,127,.34), color-mix(in srgb, var(--gold) 12%, transparent), rgba(233,203,112,.78), color-mix(in srgb, var(--gold) 8%, transparent));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: .72;
+  pointer-events: none;
+  animation: reactbits-surface-orbit 24s linear infinite;
+}
+[data-theme="dark"] .reactbits-ambient-surface::after { opacity: .62; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reactbits-ambient-surface::after { animation: none; }
+}
+
+html[data-theme="sepia"] { color-scheme: light; --shell-bg: #f2e8d5; --ink: #453a2a; }
+html[data-theme="sepia"] .start-wird-btn,
+html[data-theme="sepia"] .khatma-save-btn,
+html[data-theme="sepia"] .custom-wird-start { border-color: var(--gold); background: linear-gradient(135deg, #d4af37 0%, #b89728 100%); color: #2b2308; box-shadow: none; }
+[data-theme="sepia"] body { background: #f2e8d5; color: #453a2a; }
+[data-theme="sepia"] .reader-manuscript-wrapper:not(.is-mushaf-page-shell) { background: linear-gradient(145deg, rgba(251,246,234,.9), rgba(239,226,201,.76)); border-color: rgba(151,121,55,.31); }
+[data-theme="sepia"] .reader-manuscript-wrapper.is-mushaf-page-shell.mushaf-react-bits-frame { background: linear-gradient(180deg,#faf4e6,#efe2c7) padding-box,conic-gradient(from var(--mushaf-border-angle),#9c7840,#ead59f,#8d7043,#d3b45d,#9c7840) border-box; }
+[data-theme="sepia"] .header-glass-bar,
+[data-theme="sepia"] .floating-dock-bar,
+[data-theme="sepia"] .khatma-modal-card,
+[data-theme="sepia"] .search-modal-box,
+[data-theme="sepia"] .account-dialog,
+[data-theme="sepia"] .statistics-modal,
+[data-theme="sepia"] .surah-drawer-sheet,
+[data-theme="sepia"] .reading-confirm-dialog { background-color: rgba(249,243,230,.94); color: #453a2a; border-color: rgba(151,121,55,.3); }
+[data-theme="sepia"] .juz-hizb-indicator,
+[data-theme="sepia"] .account-form input,
+[data-theme="sepia"] .duration-pill,
+[data-theme="sepia"] .khatma-days-input { background-color: rgba(127,98,55,.07); color: #453a2a; }
+[data-theme="sepia"] .mushaf-page-heading { background: linear-gradient(105deg,rgba(151,121,55,.08),rgba(255,252,244,.6),rgba(151,121,55,.08)); }
+[data-theme="sepia"] .dock-item { color: #4c3d28; }
+
+/* Pigeon blue reading theme with beige accents and borderless surfaces. */
+html[data-theme="pigeon-blue"] { color-scheme: dark; --shell-bg:#122b46; --ink:#edf2f7; --gold:#d9cbb0; --gold-glow:rgba(217,203,176,.18); --card-bg:rgba(19,46,73,.88); }
+[data-theme="pigeon-blue"] body { background:radial-gradient(ellipse at 50% 0%,#294966 0%,#122b46 58%,#0b1c2d 100%); color:#edf2f7; }
+[data-theme="pigeon-blue"] .reactbits-ambient-surface::after { display:none; }
+[data-theme="pigeon-blue"] .reader-manuscript-wrapper:not(.is-mushaf-page-shell) { background:linear-gradient(145deg,rgba(28,58,85,.96),rgba(18,43,70,.96)); border-color:transparent; color:#edf2f7; box-shadow:0 24px 70px -30px rgba(0,0,0,.68),inset 0 1px 0 rgba(255,255,255,.07); }
+[data-theme="pigeon-blue"] .header-glass-bar,[data-theme="pigeon-blue"] .floating-dock-bar,[data-theme="pigeon-blue"] .khatma-modal-card,[data-theme="pigeon-blue"] .search-modal-box,[data-theme="pigeon-blue"] .account-dialog,[data-theme="pigeon-blue"] .statistics-modal,[data-theme="pigeon-blue"] .surah-drawer-sheet,[data-theme="pigeon-blue"] .reading-confirm-dialog { background-color:rgba(17,41,66,.97); color:#edf2f7; border-color:transparent; }
+[data-theme="pigeon-blue"] .dock-item,[data-theme="pigeon-blue"] .dock-toggle-bead { color:#e8eef9; }
+[data-theme="pigeon-blue"] .dock-item:hover,[data-theme="pigeon-blue"] .dock-item.is-active,[data-theme="pigeon-blue"] .dock-item.is-bookmarked { color:#f1e8d7; background:rgba(222,211,187,.13); }
+[data-theme="pigeon-blue"] .account-form input,[data-theme="pigeon-blue"] .duration-pill,[data-theme="pigeon-blue"] .khatma-days-input,[data-theme="pigeon-blue"] .juz-hizb-indicator { background-color:rgba(255,255,255,.08); color:#edf3ff; border-color:transparent; }
+[data-theme="pigeon-blue"] .mushaf-page-heading { background:linear-gradient(105deg,rgba(17,41,66,.94),rgba(34,66,94,.96),rgba(17,41,66,.94)); color:#edf2f7; border-color:transparent; }
+
+/* Keep font-rendered Mushaf pages visually consistent with the theme's SVG page surface. */
+[data-theme="pigeon-blue"] .reader-manuscript-wrapper.is-mushaf-page-shell :is(.mushaf-font-page-content, .mushaf-svg-fallback, .ayah-span) {
+  color: #343a40;
+}
+
+[data-theme="pigeon-blue"] .reader-manuscript-wrapper.is-mushaf-page-shell.mushaf-react-bits-frame {
+  background:linear-gradient(180deg,rgba(252,249,241,.99),rgba(243,237,224,.99));
+  border:0;
+  box-shadow:0 22px 64px rgba(5,17,30,.42);
+}
+[data-theme="pigeon-blue"] .floating-dock-bar,[data-theme="pigeon-blue"] .header-glass-bar,[data-theme="pigeon-blue"] .spotlight-card { border-color:transparent; }
+[data-theme="pigeon-blue"] .dock-item:hover,[data-theme="pigeon-blue"] .dock-item.is-active,[data-theme="pigeon-blue"] .dock-item.is-bookmarked { color:#f1e8d7; background:rgba(222,211,187,.13); }
+[data-theme="pigeon-blue"] .dock-visibility-bead.is-active { background:#d9cbb0; color:#172b3e; }
+[data-theme="pigeon-blue"] .dock-visibility-bead { background:#cbd2d8; color:#263744; border:1px solid rgba(217,203,176,.3); }
+[data-theme="pigeon-blue"] .dock-visibility-bead.is-active { background:#d9cbb0; color:#25313b; }
+[data-theme="pigeon-blue"] .reader-speed-badge { background:#d9cbb0; border-color:transparent; color:#172b3e; }
+
+[data-theme="pigeon-blue"] :is(button,input,select,textarea,[role="button"],.spotlight-card) { border-color:transparent; }
+html[data-theme="pigeon-blue"] * { border-color: transparent !important; }
+html[data-theme="pigeon-blue"] .floating-dock-bar {
+  border-color: rgba(222,211,187,.58) !important;
+  box-shadow: 0 0 0 1px rgba(222,211,187,.1), 0 16px 36px -8px rgba(0,0,0,.3);
+}
+
+/* Keep the backup and khatma tools in the Pigeon Blue beige palette. */
+html[data-theme="pigeon-blue"] .account-eyebrow,
+html[data-theme="pigeon-blue"] .account-link-button,
+html[data-theme="pigeon-blue"] .account-hint code,
+html[data-theme="pigeon-blue"] .account-legal-links a,
+html[data-theme="pigeon-blue"] .drive-copy,
+html[data-theme="pigeon-blue"] .drive-icon-wrap,
+html[data-theme="pigeon-blue"] .drive-restore-action,
+html[data-theme="pigeon-blue"] .khatma-section-tabs button.is-active,
+html[data-theme="pigeon-blue"] .custom-wird-intro strong,
+html[data-theme="pigeon-blue"] .custom-wird-row-index,
+html[data-theme="pigeon-blue"] .custom-wird-picker-trigger > svg,
+html[data-theme="pigeon-blue"] .custom-wird-stepper button,
+html[data-theme="pigeon-blue"] .custom-wird-add,
+html[data-theme="pigeon-blue"] .custom-wird-picker-search,
+html[data-theme="pigeon-blue"] .custom-wird-picker-option[data-highlighted],
+html[data-theme="pigeon-blue"] .custom-wird-picker-option[data-selected],
+html[data-theme="pigeon-blue"] .custom-wird-summary strong,
+html[data-theme="pigeon-blue"] .khatma-division-help strong,
+html[data-theme="pigeon-blue"] .khatma-current-empty,
+html[data-theme="pigeon-blue"] .khatma-edit-current-btn,
+html[data-theme="pigeon-blue"] .saved-plan-topline b,
+html[data-theme="pigeon-blue"] .khatma-schedule-head span,
+html[data-theme="pigeon-blue"] .khatma-schedule-row span,
+html[data-theme="pigeon-blue"] .range-text strong,
+html[data-theme="pigeon-blue"] .stat-num,
+html[data-theme="pigeon-blue"] .gold-icon {
+  color: #e7ddc8;
+}
+
+html[data-theme="pigeon-blue"] .account-link-button,
+html[data-theme="pigeon-blue"] .account-legal-links a,
+html[data-theme="pigeon-blue"] .drive-restore-action,
+html[data-theme="pigeon-blue"] .custom-wird-row-index,
+html[data-theme="pigeon-blue"] .custom-wird-stepper button,
+html[data-theme="pigeon-blue"] .custom-wird-add,
+html[data-theme="pigeon-blue"] .custom-wird-picker-search,
+html[data-theme="pigeon-blue"] .custom-wird-picker-option[data-highlighted],
+html[data-theme="pigeon-blue"] .custom-wird-picker-option[data-selected],
+html[data-theme="pigeon-blue"] .khatma-section-tabs button.is-active,
+html[data-theme="pigeon-blue"] .khatma-edit-current-btn,
+html[data-theme="pigeon-blue"] .duration-pill.is-active {
+  background-color: color-mix(in srgb, #d9cbb0 14%, #122b46);
+}
+
+html[data-theme="pigeon-blue"] .drive-card,
+html[data-theme="pigeon-blue"] .account-user-card,
+html[data-theme="pigeon-blue"] .custom-wird-intro,
+html[data-theme="pigeon-blue"] .custom-wird-row,
+html[data-theme="pigeon-blue"] .khatma-division-help,
+html[data-theme="pigeon-blue"] .khatma-plan-chip {
+  background: linear-gradient(145deg, rgba(217,203,176,.09), rgba(18,43,70,.72));
+  box-shadow: none;
+}
+
+html[data-theme="pigeon-blue"] .custom-wird-picker-trigger,
+html[data-theme="pigeon-blue"] .custom-wird-stepper,
+html[data-theme="pigeon-blue"] .duration-pill,
+html[data-theme="pigeon-blue"] .khatma-days-input {
+  background: rgba(217,203,176,.08);
+  color: #edf2f7;
+}
+
+html[data-theme="pigeon-blue"] .custom-wird-picker-menu {
+  background: #17334f;
+  color: #edf2f7;
+}
+
+html[data-theme="pigeon-blue"] .custom-wird-picker-option,
+html[data-theme="pigeon-blue"] .custom-wird-row-head > strong,
+html[data-theme="pigeon-blue"] .saved-plan-topline strong {
+  color: #e7ddc8;
+}
+
+html[data-theme="pigeon-blue"] .custom-wird-row-fields label,
+html[data-theme="pigeon-blue"] .custom-wird-repeat-field,
+html[data-theme="pigeon-blue"] .custom-wird-surah-field,
+html[data-theme="pigeon-blue"] .custom-wird-intro p,
+html[data-theme="pigeon-blue"] .custom-wird-summary,
+html[data-theme="pigeon-blue"] .drive-copy small,
+html[data-theme="pigeon-blue"] .drive-status,
+html[data-theme="pigeon-blue"] .account-google-auth p {
+  color: #bdc5ce;
+}
+
+html[data-theme="pigeon-blue"] .start-wird-btn,
+html[data-theme="pigeon-blue"] .khatma-save-btn {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, var(--gold) 0%, #b8a67e 100%);
+  color: #2b2308;
+  box-shadow: none;
+}
+
+/* Refined account and custom wird surfaces for the blue theme. */
+html[data-theme="pigeon-blue"] :is(.account-dialog, .khatma-modal-card) {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html[data-theme="pigeon-blue"] :is(.account-dialog, .khatma-modal-card) :is(input, textarea, [contenteditable="true"]) {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+html[data-theme="pigeon-blue"] :is(.account-dialog, .khatma-modal-card) ::selection {
+  background: transparent;
+  color: inherit;
+}
+
+html[data-theme="pigeon-blue"] .account-dialog {
+  background: linear-gradient(155deg, #15334f, #102941 72%);
+  border: 1px solid rgba(217,203,176,.12);
+  box-shadow: 0 26px 80px rgba(2,12,22,.48);
+}
+
+html[data-theme="pigeon-blue"] .account-header {
+  border-bottom-color: rgba(217,203,176,.1);
+}
+
+html[data-theme="pigeon-blue"] .account-tabs {
+  background: rgba(5,20,34,.32);
+}
+
+html[data-theme="pigeon-blue"] .drive-card {
+  padding: 18px;
+  border: 1px solid rgba(217,203,176,.14);
+  border-radius: 17px;
+  background: linear-gradient(145deg, rgba(217,203,176,.075), rgba(8,27,45,.32));
+}
+
+html[data-theme="pigeon-blue"] .drive-card::before {
+  width: 3px;
+  background: #d9cbb0;
+  opacity: .8;
+}
+
+html[data-theme="pigeon-blue"] .drive-copy {
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(194,202,210,.08);
+}
+
+html[data-theme="pigeon-blue"] .drive-actions {
+  gap: 10px;
+}
+
+html[data-theme="pigeon-blue"] .drive-action.account-primary {
+  background: #d9cbb0;
+  color: #172b3e;
+}
+
+html[data-theme="pigeon-blue"] .drive-action.account-secondary,
+html[data-theme="pigeon-blue"] .drive-restore-action {
+  background: rgba(217,203,176,.08);
+  color: #e7ddc8;
+}
+
+html[data-theme="pigeon-blue"] .custom-wird-intro,
+html[data-theme="pigeon-blue"] .custom-wird-row {
+  border: 1px solid rgba(217,203,176,.12);
+  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(217,203,176,.055), rgba(8,27,45,.28));
+}
+
+html[data-theme="pigeon-blue"] .custom-wird-row {
+  padding: 14px;
+  gap: 12px;
+}
+
+html[data-theme="pigeon-blue"] .custom-wird-row-head > strong {
+  color: #f0e8d9;
+}
+
+html[data-theme="pigeon-blue"] :is(.custom-wird-picker-trigger, .custom-wird-stepper, .khatma-days-input) {
+  border: 1px solid rgba(217,203,176,.12);
+  border-radius: 10px;
+  background: rgba(6,24,41,.38);
+  color: #edf2f7;
+}
+
+html[data-theme="pigeon-blue"] .custom-wird-add {
+  border: 1px dashed rgba(217,203,176,.25);
+  border-radius: 12px;
+  background: rgba(217,203,176,.055);
+  color: #e7ddc8;
+}
+
+html[data-theme="pigeon-blue"] .custom-wird-save {
+  border: 1px solid rgba(217,203,176,.2);
+  background: rgba(217,203,176,.07);
+  color: #e7ddc8;
+}
+
+html[data-theme="pigeon-blue"] .custom-wird-start,
+html[data-theme="pigeon-blue"] .khatma-save-btn {
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold) 0%, #b8a67e 100%);
+  color: #2b2308;
+  box-shadow: 0 5px 14px rgba(0,0,0,.12);
+}
+
+html[data-theme="pigeon-blue"] :is(.account-dialog, .khatma-modal-card) :is(button, a):active {
+  filter: brightness(.96);
+}
+
+/* Soft neutral grey theme with warm stone accents. */
+html[data-theme="grey"] {
+  color-scheme: light;
+  --shell-bg: #e5e7e9;
+  --ink: #343a40;
+  --gold: #a49373;
+  --gold-glow: rgba(164,147,115,.18);
+  --card-bg: rgba(250,251,252,.82);
+}
+
+html[data-theme="grey"] body {
+  color: #343a40;
+  background: radial-gradient(ellipse at 50% 0%, #f1f2f3, #e5e7e9 58%, #d8dce0 100%);
+}
+
+html[data-theme="grey"] .reader-manuscript-wrapper:not(.is-mushaf-page-shell) {
+  background: linear-gradient(145deg, rgba(250,251,252,.96), rgba(232,235,238,.96));
+  color: #343a40;
+  border-color: rgba(96,106,116,.18);
+}
+
+html[data-theme="grey"] :is(.header-glass-bar, .floating-dock-bar, .khatma-modal-card, .search-modal-box, .account-dialog, .statistics-modal, .surah-drawer-sheet, .reading-confirm-dialog) {
+  background-color: rgba(246,247,248,.97);
+  color: #343a40;
+  border-color: rgba(96,106,116,.17);
+}
+
+html[data-theme="grey"] :is(.account-form input, .duration-pill, .khatma-days-input, .juz-hizb-indicator) {
+  background-color: rgba(115,125,135,.09);
+  color: #343a40;
+}
+
+html[data-theme="grey"] :is(.drive-card, .custom-wird-intro, .custom-wird-row, .khatma-division-help, .khatma-plan-chip) {
+  border-color: rgba(96,106,116,.16);
+  background: linear-gradient(145deg, rgba(255,255,255,.64), rgba(219,223,227,.54));
+  box-shadow: none;
+}
+
+html[data-theme="grey"] :is(.custom-wird-picker-trigger, .custom-wird-stepper, .custom-wird-add) {
+  background: rgba(116,126,136,.09);
+  color: #343a40;
+}
+
+html[data-theme="grey"] .drive-copy,
+html[data-theme="grey"] .drive-copy small,
+html[data-theme="grey"] .custom-wird-row-head > strong,
+html[data-theme="grey"] .custom-wird-row-fields label,
+html[data-theme="grey"] .custom-wird-repeat-field,
+html[data-theme="grey"] .custom-wird-surah-field,
+html[data-theme="grey"] .custom-wird-intro strong,
+html[data-theme="grey"] .custom-wird-intro p,
+html[data-theme="grey"] .custom-wird-summary,
+html[data-theme="grey"] .custom-wird-summary strong {
+  color: #555e66;
+}
+
+html[data-theme="grey"] .drive-copy {
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(117,127,137,.08);
+}
+
+html[data-theme="grey"] .drive-action.account-primary,
+html[data-theme="grey"] .khatma-save-btn,
+html[data-theme="grey"] .start-wird-btn {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, #cbbfa4 0%, #a49373 100%);
+  color: #292a1e;
+  box-shadow: none;
+}
+
+html[data-theme="grey"] .dock-item { color: #424950; }
+html[data-theme="grey"] .dock-visibility-bead { background: #d0d4d8; color: #35414b; border: 1px solid rgba(73,84,94,.2); }
+html[data-theme="grey"] .dock-visibility-bead.is-active { background: #c9c0ae; color: #343a40; }
+
+/* Use neutral grey surfaces for feature windows in the Pigeon Blue theme. */
+html[data-theme="pigeon-blue"] {
+  --feature-window: #2e3943;
+  --feature-card: #35424d;
+  --feature-control: #414e59;
+  --feature-text: #f0ede7;
+  --feature-muted: #c0c7cd;
+}
+
+html[data-theme="pigeon-blue"] body :is(.khatma-modal-card, .account-dialog, .search-modal-box, .statistics-modal, .surah-drawer-sheet, .reading-confirm-dialog, .account-confirm-dialog) {
+  background: var(--feature-window);
+  color: var(--feature-text);
+}
+
+html[data-theme="pigeon-blue"] body :is(.custom-wird-heading, .custom-wird-intro, .custom-wird-row, .custom-wird-summary, .custom-wird-picker-menu, .khatma-hero-card, .today-wird-card, .khatma-schedule, .khatma-division-help, .khatma-plan-picker, .khatma-plan-chip, .drive-card, .account-user-card, .search-result, .statistics-card, .surah-drawer-section) {
+  background: var(--feature-card);
+  color: var(--feature-text);
+}
+
+html[data-theme="pigeon-blue"] body :is(.custom-wird-picker-trigger, .custom-wird-stepper, .custom-wird-name-field .khatma-days-input, .account-form input, .khatma-days-input, .duration-pill, .juz-hizb-indicator, .custom-wird-picker-search) {
+  background: var(--feature-control);
+  color: var(--feature-text);
+}
+
+html[data-theme="pigeon-blue"] body :is(.custom-wird-heading-copy > strong, .custom-wird-row-title > strong, .custom-wird-summary-copy > strong, .custom-wird-name-field .section-label, .account-dialog h2, .khatma-modal-card h3, .search-modal-box h2, .statistics-modal h2, .surah-drawer-sheet h2) {
+  color: var(--feature-text);
+}
+
+html[data-theme="pigeon-blue"] body :is(.custom-wird-heading-copy p, .custom-wird-row-title > span, .custom-wird-summary-copy > small, .drive-copy small, .account-hint, .account-google-auth p, .khatma-modal-card .stat-label, .khatma-modal-card .stat-sub, .khatma-modal-card .hero-text-wrap p) {
+  color: var(--feature-muted);
+}
+
+html[data-theme="pigeon-blue"] body :is(.custom-wird-actions .custom-wird-start, .khatma-modal-card .khatma-save-btn, .khatma-modal-card .start-wird-btn, .account-dialog .account-primary) {
+  background: linear-gradient(135deg, var(--gold) 0%, #b8a67e 100%);
+  color: #2b2308;
+}
+
+/* Give Mushaf mode a neutral paper-grey surface while leaving SVG Quran ink unchanged. */
+html[data-theme="pigeon-blue"] body .reader-manuscript-wrapper.is-mushaf-page-shell.mushaf-react-bits-frame {
+  background: linear-gradient(180deg, #eceeef, #dfe3e6);
+  border: 0;
+  box-shadow: 0 22px 64px rgba(5,17,30,.24);
+}
+
+html[data-theme="grey"] body .reader-manuscript-wrapper.is-mushaf-page-shell.mushaf-react-bits-frame {
+  background: linear-gradient(180deg, #eceeef, #dfe3e6);
+  border: 0;
+  box-shadow: 0 22px 64px rgba(5,17,30,.24);
+}
+
+html[data-theme="pigeon-blue"] body .mushaf-page-aurora,
+html[data-theme="grey"] body .mushaf-page-aurora {
+  display: none;
+}
+
+html[data-theme="pigeon-blue"] body .mushaf-page-heading,
+html[data-theme="grey"] body .mushaf-page-heading {
+  background: linear-gradient(105deg, rgba(213,218,222,.92), rgba(238,240,242,.96), rgba(213,218,222,.92));
+  color: #343a40;
+}
+
+html[data-theme="pigeon-blue"] body .mushaf-svg-page,
+html[data-theme="grey"] body .mushaf-svg-page {
+  background: #e5e7e9;
+}
+
+html[data-theme="pigeon-blue"] body .mushaf-svg-artwork,
+html[data-theme="grey"] body .mushaf-svg-artwork {
+  filter: none;
+}
+
+/* Beige selection and form controls inside blue-theme feature windows. */
+html[data-theme="pigeon-blue"] body .khatma-modal-card .duration-pill.is-active,
+html[data-theme="pigeon-blue"] body .khatma-modal-card .khatma-section-tabs button.is-active,
+html[data-theme="pigeon-blue"] body .khatma-modal-card .khatma-plan-chip.is-active,
+html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-picker-option[data-selected],
+html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-picker-option[data-highlighted] {
+  background: #d9cbb0;
+  color: #25313b;
+  border-color: #d9cbb0;
+  box-shadow: none;
+}
+
+html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-name-field .khatma-days-input,
+html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-picker-trigger,
+html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-stepper,
+html[data-theme="pigeon-blue"] body .khatma-modal-card .khatma-days-input,
+html[data-theme="pigeon-blue"] body .khatma-modal-card .juz-hizb-indicator {
+  background: var(--feature-control);
+  color: var(--feature-text);
+  border-color: rgba(217,203,176,.16);
+}
+html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-picker-trigger > svg,
+html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-name-field .section-label svg {
+  color: #c0c7cd;
+}
+
+html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-stepper button {
+  background: rgba(217,203,176,.12);
+  color: #d9cbb0;
+}
+
+html[data-theme="pigeon-blue"] body .khatma-modal-card .khatma-stats-grid .stat-card {
+  background: #35424d;
+  color: #e7ddc8;
+  border-color: rgba(217,203,176,.12);
+}
+
+html[data-theme="pigeon-blue"] body .khatma-modal-card .stat-ring-track {
+  stroke: rgba(240,237,231,.14);
+}
+
+html[data-theme="pigeon-blue"] body .khatma-modal-card .stat-ring-value {
+  stroke: #d9cbb0;
+}
+
+html[data-theme="pigeon-blue"] body .khatma-modal-card .stat-ring-copy strong {
+  color: #e7ddc8;
+}
+
+html[data-theme="pigeon-blue"] body .khatma-modal-card .stat-ring-copy small {
+  color: #c0c7cd;
+}

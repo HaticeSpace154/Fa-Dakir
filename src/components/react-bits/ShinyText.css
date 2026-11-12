@@ -1,0 +1,32 @@
+.shiny-text {
+  color: var(--shiny-color, var(--gold));
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  animation: shine 4s linear infinite;
+  text-shadow: 0 0 12px color-mix(in srgb, var(--gold) 25%, transparent);
+  font-weight: 700;
+}
+
+.shiny-text.disabled {
+  animation: none;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

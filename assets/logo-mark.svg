@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="263" y1="226" x2="770" y2="791" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6D979"/><stop offset=".48" stop-color="#D4AD43"/><stop offset="1" stop-color="#A97822"/>
+    </linearGradient>
+    <linearGradient id="page" x1="512" y1="478" x2="512" y2="733" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF4C5"/><stop offset="1" stop-color="#D6B85A"/>
+    </linearGradient>
+  </defs>
+  <!-- A simple mihrab arch, eight-point rosette and open Qur'an. -->
+  <path d="M512 156c-17 39-53 69-101 92-101 49-174 148-174 270v281h550V518c0-122-73-221-174-270-48-23-84-53-101-92Z" stroke="url(#gold)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M512 207c-15 24-39 44-72 60-80 39-139 116-139 213v269h422V480c0-97-59-174-139-213-33-16-57-36-72-60Z" stroke="url(#gold)" stroke-opacity=".34" stroke-width="5"/>
+  <path d="m512 277 17 42 42 17-42 17-17 42-17-42-42-17 42-17 17-42Z" fill="url(#gold)"/>
+  <path d="M512 438c-74-54-155-67-237-38v207c82-25 163-12 237 40 74-52 155-65 237-40V400c-82-29-163-16-237 38Z" fill="#101617" stroke="url(#gold)" stroke-width="18" stroke-linejoin="round"/>
+  <path d="M512 438v209" stroke="url(#gold)" stroke-width="13" stroke-linecap="round"/>
+  <path d="M295 438c67-19 131-9 195 29v149c-64-36-128-46-195-29V438Z" fill="url(#page)"/>
+  <path d="M729 438c-67-19-131-9-195 29v149c64-36 128-46 195-29V438Z" fill="url(#page)"/>
+  <path d="M324 466c48-9 98 0 146 25M324 508c48-8 98 1 146 25M700 466c-48-9-98 0-146 25M700 508c-48-8-98 1-146 25" stroke="#906A20" stroke-opacity=".74" stroke-width="8" stroke-linecap="round"/>
+  <path d="M512 714v34m-82 0h164" stroke="url(#gold)" stroke-width="16" stroke-linecap="round"/>
+</svg>
