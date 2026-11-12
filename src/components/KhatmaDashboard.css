@@ -43,9 +43,13 @@
 [data-theme="sepia"] .khatma-overlay { background: rgba(58, 45, 24, 0.58); }
 [data-theme="sepia"] .khatma-modal-card { background: rgba(249, 243, 230, 0.97); border-color: rgba(151, 121, 55, 0.35); }
 html[data-theme="pigeon-blue"] .khatma-overlay { background: rgba(6, 17, 28, 0.68); }
+html[data-theme="graphite"] .khatma-overlay { background: rgba(30,30,30, 0.68); }
 html[data-theme="pigeon-blue"] .khatma-modal-card { background: rgba(17, 41, 66, 0.97); border-color: rgba(217, 203, 176, 0.22); color: #edf2f7; }
+html[data-theme="graphite"] .khatma-modal-card { background: rgba(54,54,54, 0.97); border-color: rgba(196,196,196, 0.22); color: #f2f2f2; }
 html[data-theme="grey"] .khatma-overlay { background: rgba(52, 58, 64, 0.58); }
+html[data-theme="green"] .khatma-overlay { background: rgba(41,65,49, 0.58); }
 html[data-theme="grey"] .khatma-modal-card { background: rgba(246, 247, 248, 0.97); border-color: rgba(96, 106, 116, 0.25); }
+html[data-theme="green"] .khatma-modal-card { background: rgba(239,245,241, 0.97); border-color: rgba(79,123,94, 0.25); }
 /* Devices without backdrop-filter support (older browsers / some Android WebViews): solid dim so the app behind the khatma window is never legible. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .khatma-overlay { background: rgba(9, 12, 14, 0.82); }
@@ -53,11 +57,31 @@ html[data-theme="grey"] .khatma-modal-card { background: rgba(246, 247, 248, 0.9
   html[data-theme="pigeon-blue"] .khatma-overlay { background: rgba(6, 17, 28, 0.84); }
   html[data-theme="grey"] .khatma-overlay { background: rgba(52, 58, 64, 0.78); }
 }
+/* Devices without backdrop-filter support (older browsers / some Android WebViews): solid dim so the app behind the khatma window is never legible. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .khatma-overlay { background: rgba(5,8,6, 0.82); }
+  [data-theme="sepia"] .khatma-overlay { background: rgba(28,44,33, 0.78); }
+  html[data-theme="pigeon-blue"] .khatma-overlay { background: rgba(9,15,11, 0.84); }
+  html[data-theme="green"] .khatma-overlay { background: rgba(41,65,49, 0.78); }
+}
+/* Devices without backdrop-filter support (older browsers / some Android WebViews): solid dim so the app behind the khatma window is never legible. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .khatma-overlay { background: rgba(24,24,24, 0.82); }
+  [data-theme="sepia"] .khatma-overlay { background: rgba(54,54,54, 0.78); }
+  html[data-theme="graphite"] .khatma-overlay { background: rgba(30,30,30, 0.84); }
+  html[data-theme="grey"] .khatma-overlay { background: rgba(71,71,71, 0.78); }
+}
 @media (prefers-reduced-transparency: reduce) {
   .khatma-overlay { background: rgba(9, 12, 14, 0.78); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .khatma-modal-card { background: #fdfbf7; backdrop-filter: none; -webkit-backdrop-filter: none; }
   [data-theme="dark"] .khatma-modal-card { background: #141418; }
   html[data-theme="pigeon-blue"] .khatma-modal-card { background: #112942; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .khatma-overlay { background: rgba(24,24,24, 0.78); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .khatma-modal-card { background: #fafafa; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  [data-theme="dark"] .khatma-modal-card { background: #232323; }
+  html[data-theme="graphite"] .khatma-modal-card { background: #363636; }
 }
 
 @keyframes scaleUp {
@@ -225,7 +249,9 @@ html[data-theme="grey"] .khatma-modal-card { background: rgba(246, 247, 248, 0.9
 .khatma-edit-current-btn:hover { background: color-mix(in srgb, var(--gold) 24%, transparent); border-color: color-mix(in srgb, var(--gold) 75%, transparent); }
 [data-theme="dark"] .khatma-edit-current-btn { color: #e5c358; }
 html[data-theme="pigeon-blue"] .khatma-edit-current-btn { color: #d9cbb0; border-color: rgba(217,203,176,.4); background: rgba(217,203,176,.1); }
+html[data-theme="graphite"] .khatma-edit-current-btn { color: #c4c4c4; border-color: rgba(196,196,196,.4); background: rgba(196,196,196,.1); }
 html[data-theme="grey"] .khatma-edit-current-btn { color: #6d6350; }
+html[data-theme="green"] .khatma-edit-current-btn { color: #466d53; }
 [data-theme="dark"] .khatma-edit-current-btn { color: #e5c358; }
 
 .khatma-plan-picker {
@@ -259,7 +285,9 @@ html[data-theme="grey"] .khatma-edit-current-btn { color: #6d6350; }
 .khatma-new-plan-btn:hover { background: color-mix(in srgb, var(--gold) 26%, transparent); border-color: color-mix(in srgb, var(--gold) 75%, transparent); }
 [data-theme="dark"] .khatma-new-plan-btn { color: #e5c358; }
 html[data-theme="pigeon-blue"] .khatma-new-plan-btn { color: #d9cbb0; border-color: rgba(217,203,176,.4); background: rgba(217,203,176,.1); }
+html[data-theme="graphite"] .khatma-new-plan-btn { color: #c4c4c4; border-color: rgba(196,196,196,.4); background: rgba(196,196,196,.1); }
 html[data-theme="grey"] .khatma-new-plan-btn { color: #6d6350; }
+html[data-theme="green"] .khatma-new-plan-btn { color: #466d53; }
 .khatma-plan-list { display: grid; grid-template-columns: 1fr; gap: 10px; }
 .khatma-plan-chip {
   display: grid;
@@ -759,17 +787,36 @@ html[data-theme="pigeon-blue"] .custom-wird-summary {
   background: linear-gradient(145deg, rgba(217,203,176,.055), rgba(7,24,40,.34));
 }
 
+html[data-theme="graphite"] .custom-wird-heading,
+html[data-theme="graphite"] .custom-wird-row,
+html[data-theme="graphite"] .custom-wird-summary {
+  border-color: rgba(196,196,196,.13);
+  background: linear-gradient(145deg, rgba(196,196,196,.055), rgba(36,36,36,.34));
+}
+
 html[data-theme="pigeon-blue"] .custom-wird-heading-copy > strong,
 html[data-theme="pigeon-blue"] .custom-wird-row-title > strong,
 html[data-theme="pigeon-blue"] .custom-wird-name-field .section-label,
 html[data-theme="pigeon-blue"] .custom-wird-summary-copy > strong { color: #f0e8d9; }
 
+html[data-theme="graphite"] .custom-wird-heading-copy > strong,
+html[data-theme="graphite"] .custom-wird-row-title > strong,
+html[data-theme="graphite"] .custom-wird-name-field .section-label,
+html[data-theme="graphite"] .custom-wird-summary-copy > strong { color: #e4e4e4; }
+
 html[data-theme="pigeon-blue"] .custom-wird-row-title > span,
 html[data-theme="pigeon-blue"] .custom-wird-heading-copy p,
 html[data-theme="pigeon-blue"] .custom-wird-summary-copy > small { color: #b9c5d0; }
 
+html[data-theme="graphite"] .custom-wird-row-title > span,
+html[data-theme="graphite"] .custom-wird-heading-copy p,
+html[data-theme="graphite"] .custom-wird-summary-copy > small { color: #c4c4c4; }
+
 html[data-theme="pigeon-blue"] .custom-wird-picker-trigger,
 html[data-theme="pigeon-blue"] .custom-wird-stepper { background: rgba(5,20,34,.42); color: #edf2f7; }
+
+html[data-theme="graphite"] .custom-wird-picker-trigger,
+html[data-theme="graphite"] .custom-wird-stepper { background: rgba(32,32,32,.42); color: #f2f2f2; }
 
 html[data-theme="pigeon-blue"] .custom-wird-heading,
 html[data-theme="pigeon-blue"] .custom-wird-row,
@@ -777,6 +824,13 @@ html[data-theme="pigeon-blue"] .custom-wird-summary,
 html[data-theme="pigeon-blue"] .custom-wird-name-field .khatma-days-input,
 html[data-theme="pigeon-blue"] .custom-wird-picker-trigger,
 html[data-theme="pigeon-blue"] .custom-wird-stepper { border: 1px solid rgba(217,203,176,.14) !important; }
+
+html[data-theme="graphite"] .custom-wird-heading,
+html[data-theme="graphite"] .custom-wird-row,
+html[data-theme="graphite"] .custom-wird-summary,
+html[data-theme="graphite"] .custom-wird-name-field .khatma-days-input,
+html[data-theme="graphite"] .custom-wird-picker-trigger,
+html[data-theme="graphite"] .custom-wird-stepper { border: 1px solid rgba(196,196,196,.14) !important; }
 
 @media (max-width: 540px) {
   .custom-wird-heading { grid-template-columns: 38px minmax(0,1fr); padding: 13px; gap: 10px; }
@@ -834,6 +888,42 @@ html[data-theme="grey"] {
   --wird-line-strong: color-mix(in srgb, var(--gold) 48%, transparent);
   --wird-ink: var(--ink);
   --wird-on: #241d05;
+}
+
+/* ===== Saved section: khatma plans (gold) vs custom wirds (theme accent) =====
+   The wird accent is derived ONLY from the theme's own --gold/--ink/--card-bg via
+   color-mix, so the saved wird box retints with every theme automatically. */
+:root,
+[data-theme="dark"],
+[data-theme="sepia"],
+html[data-theme="pigeon-blue"],
+html[data-theme="green"] {
+  --wird: var(--gold);
+  --wird-strong: var(--gold);
+  --wird-soft: color-mix(in srgb, var(--gold) 13%, transparent);
+  --wird-soft-2: color-mix(in srgb, var(--gold) 6%, transparent);
+  --wird-line: color-mix(in srgb, var(--gold) 32%, transparent);
+  --wird-line-strong: color-mix(in srgb, var(--gold) 48%, transparent);
+  --wird-ink: var(--ink);
+  --wird-on: #0c130e;
+}
+
+/* ===== Saved section: khatma plans (gold) vs custom wirds (theme accent) =====
+   The wird accent is derived ONLY from the theme's own --gold/--ink/--card-bg via
+   color-mix, so the saved wird box retints with every theme automatically. */
+:root,
+[data-theme="dark"],
+[data-theme="sepia"],
+html[data-theme="graphite"],
+html[data-theme="grey"] {
+  --wird: var(--gold);
+  --wird-strong: var(--gold);
+  --wird-soft: color-mix(in srgb, var(--gold) 13%, transparent);
+  --wird-soft-2: color-mix(in srgb, var(--gold) 6%, transparent);
+  --wird-line: color-mix(in srgb, var(--gold) 32%, transparent);
+  --wird-line-strong: color-mix(in srgb, var(--gold) 48%, transparent);
+  --wird-ink: var(--ink);
+  --wird-on: #212121;
 }
 
 .saved-group { display: grid; gap: 9px; padding: 10px; border-radius: 15px; border: 1px solid transparent; }
@@ -915,8 +1005,18 @@ html[data-theme="grey"] {
 
 /* ===== Solid panels for pigeon-blue (overrides style.css's opaque panel rules) ===== */
 html[data-theme="pigeon-blue"] .khatma-modal-card { background: #122b46 !important; color: #edf2f7; backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+/* ===== Solid panels for pigeon-blue (overrides style.css's opaque panel rules) ===== */
+html[data-theme="graphite"] .khatma-modal-card { background: #393939 !important; color: #f2f2f2; backdrop-filter: none; -webkit-backdrop-filter: none; }
 html[data-theme="pigeon-blue"] .khatma-modal-card :is(.today-wird-card, .wird-range-box, .stat-card, .custom-wird-intro, .custom-wird-row, .khatma-division-help, .custom-wird-summary, .khatma-current-empty, .khatma-plan-chip, .wird-saved-card, .saved-group, .custom-wird-jump-saved, .khatma-hero-card, .khatma-schedule, .khatma-schedule-row) {
   background: linear-gradient(150deg, rgba(217,203,176,.14), rgba(13,32,51,.97)) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-color: transparent !important;
+  box-shadow: none;
+}
+html[data-theme="graphite"] .khatma-modal-card :is(.today-wird-card, .wird-range-box, .stat-card, .custom-wird-intro, .custom-wird-row, .khatma-division-help, .custom-wird-summary, .khatma-current-empty, .khatma-plan-chip, .wird-saved-card, .saved-group, .custom-wird-jump-saved, .khatma-hero-card, .khatma-schedule, .khatma-schedule-row) {
+  background: linear-gradient(150deg, rgba(196,196,196,.14), rgba(45,45,45,.97)) !important;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-color: transparent !important;
@@ -929,27 +1029,55 @@ html[data-theme="pigeon-blue"] .khatma-modal-card :is(.khatma-days-input, .custo
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
+html[data-theme="graphite"] .khatma-modal-card :is(.khatma-days-input, .custom-wird-picker-trigger, .custom-wird-stepper, .custom-wird-picker-search, .duration-pill) {
+  background: var(--feature-control) !important;
+  color: var(--feature-text) !important;
+  border: 1px solid rgba(196,196,196,.16) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
 /* Secondary actions in pigeon-blue: visible beige-tinted buttons with readable text */
 html[data-theme="pigeon-blue"] .khatma-modal-card :is(.custom-wird-add, .custom-wird-save, .khatma-new-plan-btn, .khatma-edit-current-btn, .saved-group-new, .custom-wird-jump-saved) {
   background: rgba(217,203,176,.12) !important;
   color: #e7ddc8 !important;
   border: 1px solid rgba(217,203,176,.35) !important;
 }
+/* Secondary actions in pigeon-blue: visible beige-tinted buttons with readable text */
+html[data-theme="graphite"] .khatma-modal-card :is(.custom-wird-add, .custom-wird-save, .khatma-new-plan-btn, .khatma-edit-current-btn, .saved-group-new, .custom-wird-jump-saved) {
+  background: rgba(196,196,196,.12) !important;
+  color: #d8d8d8 !important;
+  border: 1px solid rgba(196,196,196,.35) !important;
+}
 html[data-theme="pigeon-blue"] .khatma-modal-card :is(.custom-wird-add, .custom-wird-save, .khatma-new-plan-btn, .khatma-edit-current-btn, .saved-group-new, .custom-wird-jump-saved):hover {
   background: rgba(217,203,176,.2) !important;
   border-color: rgba(217,203,176,.55) !important;
   color: #f4ecdc !important;
 }
+html[data-theme="graphite"] .khatma-modal-card :is(.custom-wird-add, .custom-wird-save, .khatma-new-plan-btn, .khatma-edit-current-btn, .saved-group-new, .custom-wird-jump-saved):hover {
+  background: rgba(196,196,196,.2) !important;
+  border-color: rgba(196,196,196,.55) !important;
+  color: #e8e8e8 !important;
+}
 html[data-theme="pigeon-blue"] .khatma-modal-card .custom-wird-stepper button {
   background: rgba(121, 120, 119, 0.12) !important;
   color: #d9cbb0 !important;
 }
+html[data-theme="graphite"] .khatma-modal-card .custom-wird-stepper button {
+  background: rgba(133,133,133, 0.12) !important;
+  color: #c4c4c4 !important;
+}
 html[data-theme="pigeon-blue"] .khatma-modal-card :is(.khatma-days-input, .custom-wird-picker-search, .custom-wird-stepper) input,
 html[data-theme="pigeon-blue"] .khatma-modal-card .khatma-days-input::placeholder { color: var(--feature-text); -webkit-text-fill-color: var(--feature-text); }
+html[data-theme="graphite"] .khatma-modal-card :is(.khatma-days-input, .custom-wird-picker-search, .custom-wird-stepper) input,
+html[data-theme="graphite"] .khatma-modal-card .khatma-days-input::placeholder { color: var(--feature-text); -webkit-text-fill-color: var(--feature-text); }
 html[data-theme="pigeon-blue"] .khatma-modal-card .khatma-days-input::placeholder { color: var(--feature-muted); -webkit-text-fill-color: var(--feature-muted); }
+html[data-theme="graphite"] .khatma-modal-card .khatma-days-input::placeholder { color: var(--feature-muted); -webkit-text-fill-color: var(--feature-muted); }
 html[data-theme="pigeon-blue"] .khatma-modal-card :is(.custom-wird-picker-trigger, .custom-wird-stepper, .custom-wird-picker-search) > svg { color: #d9cbb0 !important; }
+html[data-theme="graphite"] .khatma-modal-card :is(.custom-wird-picker-trigger, .custom-wird-stepper, .custom-wird-picker-search) > svg { color: #c4c4c4 !important; }
 html[data-theme="pigeon-blue"] .khatma-section-tabs button { background: var(--feature-control) !important; border-color: rgba(217,203,176,.16) !important; color: var(--feature-text) !important; }
+html[data-theme="graphite"] .khatma-section-tabs button { background: var(--feature-control) !important; border-color: rgba(196,196,196,.16) !important; color: var(--feature-text) !important; }
 html[data-theme="pigeon-blue"] .khatma-section-tabs button.is-active { background: #d9cbb0 !important; border-color: #d9cbb0 !important; color: #25313b !important; }
+html[data-theme="graphite"] .khatma-section-tabs button.is-active { background: #c4c4c4 !important; border-color: #c4c4c4 !important; color: #3d3d3d !important; }
 
 /* Hide scrollbars in the khatmaati sub windows (scroll still works, bar is invisible) */
 .khatma-modal-body,
@@ -970,3 +1098,255 @@ html[data-theme="pigeon-blue"] .khatma-section-tabs button.is-active { backgroun
   .wird-saved-chips { display: none; }
   .saved-group-caption { display: none; }
 }
+
+/* =====================================================================
+   Khatmati colour harmony layer (loaded last on purpose)
+   One calm palette per theme: warm ivory / sepia / cool grey / navy / ink,
+   each with a single muted-gold accent. Three surface levels:
+     surface (the window)  >  panel (cards on it)  >  inset (controls and
+     cards inside panels). Every colour below comes from these tokens, so
+     panels, text, buttons and rings can no longer drift apart.
+   ===================================================================== */
+:root,
+html[data-theme="light"] {
+  --kh-overlay: rgba(38, 30, 12, .52);
+  --kh-surface: #fbf8f0;
+  --kh-panel: #f5efe1;
+  --kh-inset: #fffdf8;
+  --kh-ink: #2b2619;
+  --kh-muted: #7b705a;
+  --kh-line-soft: rgba(150, 118, 34, .16);
+  --kh-line: rgba(150, 118, 34, .28);
+  --kh-line-strong: rgba(150, 118, 34, .5);
+  --kh-gold: #c79f33;
+  --kh-accent: #8c6a10;
+  --kh-accent-soft: rgba(176, 138, 32, .12);
+  --kh-fill: linear-gradient(135deg, #e0c566, #bf9a2c);
+  --kh-on-accent: #2a2108;
+  --kh-track: rgba(150, 118, 34, .16);
+  --kh-danger: #a5503f;
+  --kh-success: #2f7a55;
+  --kh-warn: #9c6218;
+  --kh-shadow: 0 22px 60px rgba(40, 30, 8, .3);
+}
+html[data-theme="sepia"] {
+  --kh-overlay: rgba(52, 38, 14, .56);
+  --kh-surface: #f6eedb;
+  --kh-panel: #efe3c8;
+  --kh-inset: #fbf5e5;
+  --kh-ink: #3a2d18;
+  --kh-muted: #7c6a48;
+  --kh-line-soft: rgba(130, 98, 24, .17);
+  --kh-line: rgba(130, 98, 24, .3);
+  --kh-line-strong: rgba(130, 98, 24, .52);
+  --kh-gold: #bd922c;
+  --kh-accent: #85630f;
+  --kh-accent-soft: rgba(160, 120, 28, .13);
+  --kh-fill: linear-gradient(135deg, #d9b958, #b58b25);
+  --kh-on-accent: #2a2008;
+  --kh-track: rgba(130, 98, 24, .18);
+  --kh-danger: #9f4c3a;
+  --kh-success: #2f7450;
+  --kh-warn: #96601a;
+  --kh-shadow: 0 22px 60px rgba(52, 38, 14, .34);
+}
+html[data-theme="grey"] {
+  --kh-overlay: rgba(30, 34, 38, .6);
+  --kh-surface: #f4f5f6;
+  --kh-panel: #eceef0;
+  --kh-inset: #fbfcfc;
+  --kh-ink: #24282c;
+  --kh-muted: #6a727a;
+  --kh-line-soft: rgba(100, 108, 116, .18);
+  --kh-line: rgba(100, 108, 116, .3);
+  --kh-line-strong: rgba(128, 100, 40, .5);
+  --kh-gold: #b58f3a;
+  --kh-accent: #7d6122;
+  --kh-accent-soft: rgba(128, 100, 40, .12);
+  --kh-fill: linear-gradient(135deg, #d3b867, #b0903a);
+  --kh-on-accent: #261e08;
+  --kh-track: rgba(100, 108, 116, .2);
+  --kh-danger: #a0503f;
+  --kh-success: #2f7450;
+  --kh-warn: #96601a;
+  --kh-shadow: 0 22px 60px rgba(20, 24, 28, .36);
+}
+html[data-theme="green"] {
+  --kh-overlay: rgba(23,35,27, .6);
+  --kh-surface: #edf3ef;
+  --kh-panel: #e4eee7;
+  --kh-inset: #fafdfb;
+  --kh-ink: #1b2b20;
+  --kh-muted: #558565;
+  --kh-line-soft: rgba(80,126,95, .18);
+  --kh-line: rgba(80,126,95, .3);
+  --kh-line-strong: rgba(62,96,73, .5);
+  --kh-gold: #598c6a;
+  --kh-accent: #3a5b45;
+  --kh-accent-soft: rgba(62,96,73, .12);
+  --kh-fill: linear-gradient(135deg, #81af90, #578968);
+  --kh-on-accent: #0e1611;
+  --kh-track: rgba(80,126,95, .2);
+  --kh-danger: #538263;
+  --kh-success: #2f7450;
+  --kh-warn: #41654d;
+  --kh-shadow: 0 22px 60px rgba(15,23,18, .36);
+}
+html[data-theme="pigeon-blue"] {
+  --kh-overlay: rgba(5, 14, 24, .74);
+  --kh-surface: #112a44;
+  --kh-panel: #17344f;
+  --kh-inset: #0e2339;
+  --kh-ink: #eef2f6;
+  --kh-muted: #a8b8c8;
+  --kh-line-soft: rgba(224, 207, 156, .14);
+  --kh-line: rgba(224, 207, 156, .24);
+  --kh-line-strong: rgba(224, 207, 156, .46);
+  --kh-gold: #dcc98d;
+  --kh-accent: #e3d29c;
+  --kh-accent-soft: rgba(224, 207, 156, .12);
+  --kh-fill: linear-gradient(135deg, #ecdcab, #c9b27a);
+  --kh-on-accent: #1c2330;
+  --kh-track: rgba(224, 207, 156, .16);
+  --kh-danger: #e29a8a;
+  --kh-success: #7fd0a0;
+  --kh-warn: #e0b070;
+  --kh-shadow: 0 22px 60px rgba(0, 0, 0, .55);
+}
+html[data-theme="graphite"] {
+  --kh-overlay: rgba(27,27,27, .74);
+  --kh-surface: #373737;
+  --kh-panel: #404040;
+  --kh-inset: #303030;
+  --kh-ink: #f2f2f2;
+  --kh-muted: #b8b8b8;
+  --kh-line-soft: rgba(190,190,190, .14);
+  --kh-line: rgba(190,190,190, .24);
+  --kh-line-strong: rgba(190,190,190, .46);
+  --kh-gold: #b4b4b4;
+  --kh-accent: #c0c0c0;
+  --kh-accent-soft: rgba(190,190,190, .12);
+  --kh-fill: linear-gradient(135deg, #cccccc, #a2a2a2);
+  --kh-on-accent: #333333;
+  --kh-track: rgba(190,190,190, .16);
+  --kh-danger: #b6b6b6;
+  --kh-success: #a8a8a8;
+  --kh-warn: #a8a8a8;
+  --kh-shadow: 0 22px 60px rgba(13,13,13, .55);
+}
+html[data-theme="dark"] {
+  --kh-overlay: rgba(0, 0, 0, .74);
+  --kh-surface: #151518;
+  --kh-panel: #1c1c21;
+  --kh-inset: #111114;
+  --kh-ink: #ece6d6;
+  --kh-muted: #a39b86;
+  --kh-line-soft: rgba(226, 197, 101, .14);
+  --kh-line: rgba(226, 197, 101, .24);
+  --kh-line-strong: rgba(226, 197, 101, .46);
+  --kh-gold: #e0c25e;
+  --kh-accent: #e8cd75;
+  --kh-accent-soft: rgba(226, 197, 101, .12);
+  --kh-fill: linear-gradient(135deg, #ebcf6e, #c7a137);
+  --kh-on-accent: #1a1505;
+  --kh-track: rgba(226, 197, 101, .16);
+  --kh-danger: #e08f80;
+  --kh-success: #6fd49a;
+  --kh-warn: #e0b070;
+  --kh-shadow: 0 22px 60px rgba(0, 0, 0, .7);
+}
+
+/* The wird accent follows the same palette instead of its own variables. */
+html[data-theme] {
+  --wird: var(--kh-accent);
+  --wird-strong: var(--kh-gold);
+  --wird-soft: var(--kh-accent-soft);
+  --wird-soft-2: color-mix(in srgb, var(--kh-gold) 6%, transparent);
+  --wird-line: var(--kh-line);
+  --wird-line-strong: var(--kh-line-strong);
+  --wird-ink: var(--kh-ink);
+  --wird-on: var(--kh-on-accent);
+}
+
+/* ---- Window ---- */
+html[data-theme] .khatma-overlay { background: var(--kh-overlay) !important; -webkit-backdrop-filter: blur(10px) saturate(1.05); backdrop-filter: blur(10px) saturate(1.05); }
+html[data-theme] .khatma-modal-card.khatma-modal-card { background: var(--kh-surface) !important; color: var(--kh-ink) !important; border: 1px solid var(--kh-line) !important; box-shadow: var(--kh-shadow) !important; -webkit-backdrop-filter: none; backdrop-filter: none; }
+html[data-theme] .khatma-modal-card.khatma-modal-card::after { display: none !important; } /* drop the rotating gold/green rim; it clashed with every theme */
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-modal-head { border-bottom-color: var(--kh-line-soft); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-title { color: var(--kh-accent); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .gold-icon { color: var(--kh-gold); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .close-btn { color: var(--kh-muted); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .close-btn:hover { background: var(--kh-accent-soft); color: var(--kh-accent); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-modal-actions { background: var(--kh-surface) !important; border-top-color: var(--kh-line-soft); }
+
+/* ---- Tabs ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-section-tabs button { background: var(--kh-inset) !important; border: 1px solid var(--kh-line) !important; color: var(--kh-muted) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-section-tabs button:hover { color: var(--kh-ink) !important; border-color: var(--kh-line-strong) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-section-tabs button.is-active { background: var(--kh-fill) !important; border-color: transparent !important; color: var(--kh-on-accent) !important; }
+
+/* ---- Level 1: panels ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.khatma-hero-card, .today-wird-card, .stat-card, .khatma-plan-picker, .khatma-division-help, .khatma-schedule, .khatma-current-empty, .custom-wird-intro, .custom-wird-heading, .custom-wird-row, .custom-wird-summary, .saved-group) { background: var(--kh-panel) !important; border: 1px solid var(--kh-line-soft) !important; box-shadow: none !important; color: var(--kh-ink); }
+/* ---- Level 2: cards inside panels ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.wird-range-box, .khatma-plan-chip, .wird-saved-card) { background: var(--kh-inset) !important; border: 1px solid var(--kh-line-soft) !important; box-shadow: none !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-plan-chip.is-active { border-color: var(--kh-gold) !important; box-shadow: 0 0 0 1px var(--kh-accent-soft) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card .wird-saved-card { border-inline-start: 3px solid var(--kh-gold) !important; }
+
+/* ---- Inputs & controls ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.khatma-days-input, .custom-wird-picker-trigger, .custom-wird-stepper, .custom-wird-picker-search, .duration-pill) { background: var(--kh-inset) !important; border: 1px solid var(--kh-line) !important; color: var(--kh-ink) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.khatma-days-input, .custom-wird-stepper input, .custom-wird-picker-search input) { color: var(--kh-ink) !important; -webkit-text-fill-color: var(--kh-ink); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-days-input::placeholder { color: var(--kh-muted) !important; -webkit-text-fill-color: var(--kh-muted) !important; opacity: .8; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.khatma-days-input:focus, .custom-wird-stepper:focus-within, .custom-wird-picker-trigger:focus-visible) { border-color: var(--kh-gold) !important; outline: none; box-shadow: 0 0 0 3px var(--kh-accent-soft); }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.custom-wird-picker-trigger, .custom-wird-picker-search) > svg { color: var(--kh-accent) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card .custom-wird-stepper button { background: var(--kh-accent-soft) !important; color: var(--kh-accent) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card .custom-wird-stepper button:hover { background: color-mix(in srgb, var(--kh-gold) 24%, transparent) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card .duration-pill { color: var(--kh-muted) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card .duration-pill:hover { color: var(--kh-ink) !important; border-color: var(--kh-line-strong) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card .duration-pill.is-active { background: var(--kh-fill) !important; border-color: transparent !important; color: var(--kh-on-accent) !important; box-shadow: none; }
+
+/* ---- Primary buttons (one gold fill everywhere) ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.start-wird-btn, .khatma-save-btn, .custom-wird-start, .wird-saved-start) { background: var(--kh-fill) !important; color: var(--kh-on-accent) !important; border: 1px solid transparent !important; box-shadow: none !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.start-wird-btn, .khatma-save-btn, .custom-wird-start, .wird-saved-start):hover:not(:disabled) { filter: brightness(1.06); }
+/* ---- Secondary buttons ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.khatma-new-plan-btn, .khatma-edit-current-btn, .custom-wird-add, .custom-wird-save, .saved-group-new, .custom-wird-jump-saved, .wird-saved-edit) { background: var(--kh-accent-soft) !important; color: var(--kh-accent) !important; border: 1px solid var(--kh-line-strong) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.khatma-new-plan-btn, .khatma-edit-current-btn, .custom-wird-add, .custom-wird-save, .saved-group-new, .custom-wird-jump-saved, .wird-saved-edit):hover { background: color-mix(in srgb, var(--kh-gold) 22%, transparent) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.custom-wird-add, .custom-wird-jump-saved) { border-style: dashed !important; }
+
+/* ---- Text ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.hero-text-wrap h3, .range-text, .section-label, .khatma-plan-picker-head > strong, .custom-wird-heading-copy > strong, .custom-wird-row-title > strong, .custom-wird-row-head > strong, .custom-wird-summary-copy > strong, .custom-wird-name-field .section-label, .saved-plan-topline strong, .wird-saved-name, .stat-ring-copy strong) { color: var(--kh-ink) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.ring-sub, .hero-text-wrap p, .stat-label, .stat-sub, .wird-page-range, .saved-plan-meta, .saved-plan-pages, .khatma-schedule-row small, .khatma-schedule-note, .khatma-empty-plans, .khatma-division-help small, .custom-wird-intro p, .custom-wird-heading-copy p, .custom-wird-row-title > span, .custom-wird-summary-copy > small, .saved-group-caption, .custom-wird-row-fields label, .custom-wird-repeat-field, .custom-wird-surah-field, .stat-ring-copy small, .khatma-current-empty, .custom-wird-summary, .wird-saved-chip, .khatma-schedule-check) { color: var(--kh-muted) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.ring-pct, .wird-amount, .range-text strong, .stat-num, .custom-wird-kicker, .custom-wird-intro strong, .khatma-division-help strong, .khatma-schedule-row span, .khatma-schedule-head span, .saved-plan-topline b, .hero-badge, .tag-khatma, .tag-wird, .saved-group-count, .wird-next-label, .wird-tag, .custom-wird-summary strong, .custom-wird-summary > b, .custom-wird-row-index, .custom-wird-count-badge, .wird-saved-meta, .wird-saved-chip b, .wird-saved-chip.is-more) { color: var(--kh-accent) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card .range-text strong { color: var(--kh-accent) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.hero-badge, .wird-amount, .custom-wird-count-badge, .custom-wird-row-index, .tag-khatma, .tag-wird) { background: var(--kh-accent-soft) !important; border-color: var(--kh-line) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.wird-saved-chip) { background: transparent !important; border-color: var(--kh-line-soft) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.custom-wird-heading-icon, .custom-wird-summary-icon, .wird-saved-icon) { background: var(--kh-accent-soft) !important; color: var(--kh-accent) !important; border-color: var(--kh-line) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.custom-wird-repeat-field > span svg, .custom-wird-name-field .section-label svg) { color: var(--kh-gold); }
+
+/* ---- Rings & progress ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.ring-track, .stat-ring-track) { stroke: var(--kh-track); }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.ring-indicator, .stat-ring-value) { stroke: var(--kh-gold); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .saved-plan-progress-track { background: var(--kh-track); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .saved-plan-progress-track > span { background: var(--kh-fill); }
+
+/* ---- Schedule ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-schedule-head { border-bottom-color: var(--kh-line-soft); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-schedule-row { background: transparent !important; border-bottom-color: var(--kh-line-soft); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .khatma-schedule-row.is-complete :is(.khatma-schedule-check, span) { color: var(--kh-success) !important; }
+
+/* ---- Status notes (calm, no loud red/green) ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card .wird-status-note { background: var(--kh-accent-soft); border-color: var(--kh-line); color: var(--kh-accent); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .wird-status-note.is-ahead { background: color-mix(in srgb, var(--kh-success) 12%, transparent); border-color: color-mix(in srgb, var(--kh-success) 32%, transparent); color: var(--kh-success); }
+html[data-theme] .khatma-modal-card.khatma-modal-card .wird-status-note.is-behind { background: color-mix(in srgb, var(--kh-warn) 12%, transparent); border-color: color-mix(in srgb, var(--kh-warn) 32%, transparent); color: var(--kh-warn); }
+
+/* ---- Destructive actions: one muted terracotta ---- */
+html[data-theme] .khatma-modal-card.khatma-modal-card .custom-wird-remove { background: color-mix(in srgb, var(--kh-danger) 10%, transparent) !important; border-color: color-mix(in srgb, var(--kh-danger) 26%, transparent) !important; color: var(--kh-danger) !important; }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.khatma-delete-plan-btn, .wird-saved-delete) { background: transparent !important; color: var(--kh-muted) !important; border-color: var(--kh-line-soft); }
+html[data-theme] .khatma-modal-card.khatma-modal-card :is(.khatma-delete-plan-btn, .wird-saved-delete):hover { background: color-mix(in srgb, var(--kh-danger) 12%, transparent) !important; color: var(--kh-danger) !important; }
+
+/* ---- Surah picker (rendered in a portal, outside the window) ---- */
+html[data-theme] .custom-wird-picker-menu { background: var(--kh-inset) !important; border: 1px solid var(--kh-line) !important; color: var(--kh-ink); box-shadow: var(--kh-shadow); }
+html[data-theme] .custom-wird-picker-menu .custom-wird-picker-search { background: var(--kh-panel) !important; border: 1px solid var(--kh-line-soft) !important; color: var(--kh-ink) !important; }
+html[data-theme] .custom-wird-picker-menu .custom-wird-picker-search input { color: var(--kh-ink) !important; -webkit-text-fill-color: var(--kh-ink); }
+html[data-theme] .custom-wird-picker-menu .custom-wird-picker-search > svg { color: var(--kh-accent) !important; }
+html[data-theme] .custom-wird-picker-option { color: var(--kh-ink) !important; }
+html[data-theme] .custom-wird-picker-option small, html[data-theme] .custom-wird-no-results { color: var(--kh-muted) !important; }
+html[data-theme] .custom-wird-picker-option[data-highlighted], html[data-theme] .custom-wird-picker-option[data-selected] { background: var(--kh-accent-soft) !important; color: var(--kh-accent) !important; }

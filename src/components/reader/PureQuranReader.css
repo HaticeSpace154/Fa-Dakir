@@ -37,6 +37,8 @@
 }
 .reader-edge-nav:hover,.reader-edge-nav:focus-visible { opacity: .94; background: color-mix(in srgb, var(--gold) 18%, var(--shell-bg)); }
 .reader-edge-nav:active { transform: translateY(-50%) scale(.94); }
+/* Zen mode (double-click): the edge arrows hide; the side scroll progress bar always stays visible. */
+.pure-quran-reader-container.is-zen .reader-edge-nav { opacity: 0; visibility: hidden; pointer-events: none; }
 .reader-edge-nav-prev { left: 7px; }
 .reader-edge-nav-next { right: 7px; }
 

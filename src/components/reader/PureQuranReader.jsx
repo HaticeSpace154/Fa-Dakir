@@ -8,6 +8,7 @@ import SpotlightCard from '../react-bits/SpotlightCard';
 import Aurora from '../react-bits/Aurora';
 import { toEasternArabic, SURAHS } from '../../data/quranMetadata';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { toast } from 'sonner';
 import { useReaderStore } from '../../stores/readerStore';
 import './PureQuranReader.css';
 
@@ -95,12 +96,14 @@ export default function PureQuranReader({
   onPositionUpdate,
   onScrollFinished,
   autoScrollSpeed = 0,
+  autoScrollTimer = null,
   isAutoScrolling = false,
   recitation = 'warsh',
   readingSequenceStep = 0,
   onToggleAutoScroll
 }) {
   const isZenMode = useReaderStore((state) => state.isZenMode);
+  const setZenMode = useReaderStore((state) => state.setZenMode);
   const fontSize = useReaderStore((state) => state.fontSize);
   const viewMode = useReaderStore((state) => state.viewMode);
   const bookmarkList = Array.isArray(bookmarks) ? bookmarks : [];
@@ -119,6 +122,9 @@ export default function PureQuranReader({
   const swipeLockRef = useRef(false);
   const swipeLockTimerRef = useRef(null);
   const suppressAyahClickUntilRef = useRef(0);
+  // Time left in the current timed auto-scroll run. Kept in a ref so pausing, resuming or re-running
+  // the effect never resets the countdown.
+  const timedRunRef = useRef({ token: null, remainingMs: 0 });
 
   // Load text and page metadata for the selected riwaya.
   useEffect(() => {
@@ -221,13 +227,47 @@ export default function PureQuranReader({
     }, 450);
   };
 
+  // Double-click anywhere on the text toggles the top and bottom navs (the eye button and the timer/countdown
+  // always stay), unless they were hidden on purpose with the eye button: then they stay hidden.
+  // Auto-scroll: while it runs and the controls are showing, the double-click only tucks them away; otherwise
+  // it starts or pauses the scroll.
   const handleAutoScrollDoubleClick = () => {
+    const { isZenMode: controlsWereHidden, isNavPinnedHidden } = useReaderStore.getState();
+    if (!isNavPinnedHidden) setZenMode(!controlsWereHidden);
     if (viewMode === 'page') return;
+    if (isAutoScrolling && !controlsWereHidden) return;
     if (autoScrollClickRef.current) clearTimeout(autoScrollClickRef.current);
     onToggleAutoScroll?.();
   };
 
+  // Press and hold on the text pauses auto-scroll (and the timed countdown) until the finger/mouse is released.
+  const holdPausedRef = useRef(false);
+  const holdTimerRef = useRef(null);
+  const holdStartRef = useRef(null);
+  const startHold = (event) => {
+    if (!isAutoScrolling || viewMode === 'page' || event.isPrimary === false) return;
+    if (event.target.closest('button, a, input, textarea, select')) return;
+    holdStartRef.current = { x: event.clientX, y: event.clientY };
+    if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
+    holdTimerRef.current = setTimeout(() => { holdPausedRef.current = true; }, 220);
+  };
+  const moveHold = (event) => {
+    const start = holdStartRef.current;
+    // A drag is a manual scroll, not a hold: don't pause for it.
+    if (start && !holdPausedRef.current && Math.hypot(event.clientX - start.x, event.clientY - start.y) > 12 && holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current);
+      holdTimerRef.current = null;
+    }
+  };
+  const endHold = () => {
+    if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
+    holdTimerRef.current = null;
+    holdStartRef.current = null;
+    holdPausedRef.current = false;
+  };
+
   const handleReaderPointerDown = (event) => {
+    startHold(event);
     if (viewMode !== 'surah' || event.isPrimary === false) return;
     if (event.target.closest('button, a, input, textarea, select')) return;
     swipeStartRef.current = { x: event.clientX, y: event.clientY, pointerId: event.pointerId };
@@ -320,12 +360,64 @@ export default function PureQuranReader({
     if (!isAutoScrolling || viewMode === 'page') return undefined;
     let frame = 0;
     let previousFrameTime = 0;
+    const timerMinutes = Number(autoScrollTimer?.minutes) || 0;
+
+    if (timerMinutes > 0) {
+      // Timed mode: instead of a fixed speed, every frame covers (distance left / time left) so the
+      // surah always ends exactly when the chosen duration runs out, even if layout or position changes.
+      const timedRun = timedRunRef.current;
+      if (timedRun.token !== autoScrollTimer.token || timedRun.remainingMs <= 0) {
+        timedRun.token = autoScrollTimer.token;
+        timedRun.remainingMs = timerMinutes * 60000;
+      }
+      const { setScrollTimerRemainingSec } = useReaderStore.getState();
+      let virtualTop = null; // float position; browsers may round scrollTop, which would stall slow scrolls
+      let lastWritten = 0;
+      let lastReportedSecond = -1;
+      const advanceTimed = (now) => {
+        const node = readerScrollRef.current;
+        if (!node) { frame = requestAnimationFrame(advanceTimed); return; }
+        const elapsed = previousFrameTime ? Math.min(100, now - previousFrameTime) : 16;
+        previousFrameTime = now;
+        if (holdPausedRef.current) { frame = requestAnimationFrame(advanceTimed); return; }
+        const isFirstFrame = virtualTop === null;
+        const maxTop = Math.max(0, node.scrollHeight - node.clientHeight);
+        // First frame, or the reader moved the page by hand: continue from where it actually is.
+        if (isFirstFrame || Math.abs(node.scrollTop - lastWritten) > 1.5) virtualTop = node.scrollTop;
+        const distance = maxTop - virtualTop;
+        const timeLeft = timedRun.remainingMs;
+        timedRun.remainingMs = timeLeft - elapsed;
+        if (distance <= 1 || timedRun.remainingMs <= 0) {
+          if (distance > 1) node.scrollTop = maxTop;
+          if (isFirstFrame) toast('السورة قصيرة وتظهر كاملة على الشاشة، فلا حاجة للتمرير.');
+          timedRun.remainingMs = 0;
+          onToggleAutoScroll?.();
+          return;
+        }
+        virtualTop += distance * (elapsed / timeLeft);
+        lastWritten = virtualTop;
+        node.scrollTop = virtualTop;
+        const secondsLeft = Math.ceil(timedRun.remainingMs / 1000);
+        if (secondsLeft !== lastReportedSecond) {
+          lastReportedSecond = secondsLeft;
+          setScrollTimerRemainingSec(secondsLeft);
+        }
+        frame = requestAnimationFrame(advanceTimed);
+      };
+      frame = requestAnimationFrame(advanceTimed);
+      return () => {
+        cancelAnimationFrame(frame);
+        setScrollTimerRemainingSec(null);
+      };
+    }
+
     const pixelsPerSecond = AUTO_SCROLL_SPEEDS[Math.max(0, Math.min(AUTO_SCROLL_SPEEDS.length - 1, autoScrollSpeed))];
     const advance = (now) => {
       const node = readerScrollRef.current;
       if (!node) { frame = requestAnimationFrame(advance); return; }
       const elapsed = previousFrameTime ? Math.min(48, now - previousFrameTime) : 16;
       previousFrameTime = now;
+      if (holdPausedRef.current) { frame = requestAnimationFrame(advance); return; }
       if (node.scrollTop + node.clientHeight >= node.scrollHeight - 2) {
         onToggleAutoScroll?.();
         return;
@@ -335,7 +427,7 @@ export default function PureQuranReader({
     };
     frame = requestAnimationFrame(advance);
     return () => cancelAnimationFrame(frame);
-  }, [isAutoScrolling, autoScrollSpeed, viewMode, pageNumber]);
+  }, [isAutoScrolling, autoScrollSpeed, autoScrollTimer, viewMode, pageNumber]);
 
   // Keep each selected page at its top; continuous Mushaf scrolling advances page by page.
   useEffect(() => {
@@ -343,6 +435,7 @@ export default function PureQuranReader({
   }, [currentSurahNumber, pageNumber, viewMode]);
 
   useEffect(() => {
+    timedRunRef.current = { token: null, remainingMs: 0 }; // a new surah gets a fresh countdown
     if (isAutoScrolling) onToggleAutoScroll?.();
   }, [currentSurahNumber, viewMode]);
 
@@ -412,9 +505,12 @@ export default function PureQuranReader({
       ref={readerScrollRef}
       onScroll={handleScroll}
       onPointerDown={handleReaderPointerDown}
-      onPointerUp={handleReaderPointerUp}
-      onPointerCancel={() => { swipeStartRef.current = null; }}
-      onDoubleClick={viewMode === 'surah' ? handleAutoScrollDoubleClick : undefined}
+      onPointerUp={(event) => { endHold(); handleReaderPointerUp(event); }}
+      onPointerMove={moveHold}
+      onPointerLeave={endHold}
+      onContextMenu={(event) => { if (isAutoScrolling) event.preventDefault(); }}
+      onPointerCancel={() => { swipeStartRef.current = null; endHold(); }}
+      onDoubleClick={(event) => { if (!event.target.closest('button, a, input, textarea, select')) handleAutoScrollDoubleClick(); }}
       dir="rtl"
     >
       <button type="button" className="reader-edge-nav reader-edge-nav-prev" onClick={() => viewMode === 'page' ? navigateMushafChevron('left') : navigateReaderStep(1)} aria-label={viewMode === 'page' ? 'الصفحة التالية' : 'السورة التالية'} title={viewMode === 'page' ? 'الصفحة التالية' : 'السورة التالية'}>

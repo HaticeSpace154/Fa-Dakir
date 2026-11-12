@@ -6,7 +6,7 @@ import MovingBorderLink from '../components/ui/MovingBorderLink';
 import './Landing.css';
 
 const features = [
-  { icon: BookOpen, title: 'مصحفٌ واضح', description: 'اقرأ برواية ورش مع وضع النص أو صفحات المصحف.' },
+  { icon: BookOpen, title: 'مصحفٌ واضح', description: 'اقرأ بسبع روايات مع وضع النص أو صفحات المصحف.' },
   { icon: Bookmark, title: 'احفظ موضعك', description: 'ارجع إلى آخر صفحة أو علامة حفظتها بسهولة.' },
   { icon: CalendarDays, title: 'تابع ختمتك', description: 'خطّط وردك وتابع تقدمك يومًا بعد يوم.' },
 ];
@@ -33,7 +33,7 @@ export default function Landing() {
         <motion.div className="landing-copy" {...reveal}>
           <span className="landing-eyebrow"><span className="landing-live-dot" /> تلاوةٌ أقرب، وختمةٌ أوضح</span>
           <motion.h1 {...titleReveal}><motion.span {...titleWord}>افتح المصحف،</motion.span><br /><motion.span {...titleWord}><em>وتابع رحلتك.</em></motion.span></motion.h1>
-          <p>تجربة هادئة لقراءة القرآن برواية ورش، وحفظ موضعك، وتنظيم وردك اليومي.</p>
+          <p>تجربة هادئة لقراءة القرآن بسبع روايات، وحفظ موضعك، وتنظيم وردك اليومي.</p>
           <div className="landing-actions">
             <MovingBorderLink className="landing-cta landing-cta-web" href="/reader"><BookOpen size={19} /><span>اقرأ على الويب</span><ArrowLeft size={17} /></MovingBorderLink>
             <a className="landing-cta landing-cta-download" href="https://github.com/HaticeSpace154/Fa-Dakir/releases/download/v1.0.0/Fa-Dakir_v1.0.0.apk" download><Download size={19} /><span>حمّل تطبيق أندرويد</span><small>APK</small></a>

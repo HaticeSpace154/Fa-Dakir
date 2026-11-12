@@ -189,18 +189,34 @@ html[data-theme="sepia"] .custom-wird-start { border-color: var(--gold); backgro
 
 /* Pigeon blue reading theme with beige accents and borderless surfaces. */
 html[data-theme="pigeon-blue"] { color-scheme: dark; --shell-bg:#122b46; --ink:#edf2f7; --gold:#d9cbb0; --gold-glow:rgba(217,203,176,.18); --card-bg:rgba(19,46,73,.88); }
+
+/* Pigeon blue reading theme with beige accents and borderless surfaces. */
+html[data-theme="graphite"] { color-scheme: dark; --shell-bg:#393939; --ink:#f2f2f2; --gold:#c4c4c4; --gold-glow:rgba(196,196,196,.18); --card-bg:rgba(59,59,59,.88); }
 [data-theme="pigeon-blue"] body { background:radial-gradient(ellipse at 50% 0%,#294966 0%,#122b46 58%,#0b1c2d 100%); color:#edf2f7; }
+[data-theme="graphite"] body { background:radial-gradient(ellipse at 50% 0%,#545454 0%,#393939 58%,#292929 100%); color:#f2f2f2; }
 [data-theme="pigeon-blue"] .reactbits-ambient-surface::after { display:none; }
+[data-theme="graphite"] .reactbits-ambient-surface::after { display:none; }
 [data-theme="pigeon-blue"] .reader-manuscript-wrapper:not(.is-mushaf-page-shell) { background:linear-gradient(145deg,rgba(28,58,85,.96),rgba(18,43,70,.96)); border-color:transparent; color:#edf2f7; box-shadow:0 24px 70px -30px rgba(0,0,0,.68),inset 0 1px 0 rgba(255,255,255,.07); }
+[data-theme="graphite"] .reader-manuscript-wrapper:not(.is-mushaf-page-shell) { background:linear-gradient(145deg,rgba(69,69,69,.96),rgba(57,57,57,.96)); border-color:transparent; color:#f2f2f2; box-shadow:0 24px 70px -30px rgba(13,13,13,.68),inset 0 1px 0 rgba(255,255,255,.07); }
 [data-theme="pigeon-blue"] .header-glass-bar,[data-theme="pigeon-blue"] .floating-dock-bar,[data-theme="pigeon-blue"] .khatma-modal-card,[data-theme="pigeon-blue"] .search-modal-box,[data-theme="pigeon-blue"] .account-dialog,[data-theme="pigeon-blue"] .statistics-modal,[data-theme="pigeon-blue"] .surah-drawer-sheet,[data-theme="pigeon-blue"] .reading-confirm-dialog { background-color:rgba(17,41,66,.97); color:#edf2f7; border-color:transparent; }
+[data-theme="graphite"] .header-glass-bar,[data-theme="graphite"] .floating-dock-bar,[data-theme="graphite"] .khatma-modal-card,[data-theme="graphite"] .search-modal-box,[data-theme="graphite"] .account-dialog,[data-theme="graphite"] .statistics-modal,[data-theme="graphite"] .surah-drawer-sheet,[data-theme="graphite"] .reading-confirm-dialog { background-color:rgba(54,54,54,.97); color:#f2f2f2; border-color:transparent; }
 [data-theme="pigeon-blue"] .dock-item,[data-theme="pigeon-blue"] .dock-toggle-bead { color:#e8eef9; }
+[data-theme="graphite"] .dock-item,[data-theme="graphite"] .dock-toggle-bead { color:#f0f0f0; }
 [data-theme="pigeon-blue"] .dock-item:hover,[data-theme="pigeon-blue"] .dock-item.is-active,[data-theme="pigeon-blue"] .dock-item.is-bookmarked { color:#f1e8d7; background:rgba(222,211,187,.13); }
+[data-theme="graphite"] .dock-item:hover,[data-theme="graphite"] .dock-item.is-active,[data-theme="graphite"] .dock-item.is-bookmarked { color:#e4e4e4; background:rgba(204,204,204,.13); }
 [data-theme="pigeon-blue"] .account-form input,[data-theme="pigeon-blue"] .duration-pill,[data-theme="pigeon-blue"] .khatma-days-input,[data-theme="pigeon-blue"] .juz-hizb-indicator { background-color:rgba(255,255,255,.08); color:#edf3ff; border-color:transparent; }
+[data-theme="graphite"] .account-form input,[data-theme="graphite"] .duration-pill,[data-theme="graphite"] .khatma-days-input,[data-theme="graphite"] .juz-hizb-indicator { background-color:rgba(255,255,255,.08); color:#f6f6f6; border-color:transparent; }
 [data-theme="pigeon-blue"] .mushaf-page-heading { background:linear-gradient(105deg,rgba(17,41,66,.94),rgba(34,66,94,.96),rgba(17,41,66,.94)); color:#edf2f7; border-color:transparent; }
+[data-theme="graphite"] .mushaf-page-heading { background:linear-gradient(105deg,rgba(54,54,54,.94),rgba(77,77,77,.96),rgba(54,54,54,.94)); color:#f2f2f2; border-color:transparent; }
 
 /* Keep font-rendered Mushaf pages visually consistent with the theme's SVG page surface. */
 [data-theme="pigeon-blue"] .reader-manuscript-wrapper.is-mushaf-page-shell :is(.mushaf-font-page-content, .mushaf-svg-fallback, .ayah-span) {
   color: #343a40;
+}
+
+/* Keep font-rendered Mushaf pages visually consistent with the theme's SVG page surface. */
+[data-theme="graphite"] .reader-manuscript-wrapper.is-mushaf-page-shell :is(.mushaf-font-page-content, .mushaf-svg-fallback, .ayah-span) {
+  color: #474747;
 }
 
 [data-theme="pigeon-blue"] .reader-manuscript-wrapper.is-mushaf-page-shell.mushaf-react-bits-frame {
@@ -208,18 +224,37 @@ html[data-theme="pigeon-blue"] { color-scheme: dark; --shell-bg:#122b46; --ink:#
   border:0;
   box-shadow:0 22px 64px rgba(5,17,30,.42);
 }
+
+[data-theme="graphite"] .reader-manuscript-wrapper.is-mushaf-page-shell.mushaf-react-bits-frame {
+  background:linear-gradient(180deg,rgba(246,246,246,.99),rgba(234,234,234,.99));
+  border:0;
+  box-shadow:0 22px 64px rgba(30,30,30,.42);
+}
 [data-theme="pigeon-blue"] .floating-dock-bar,[data-theme="pigeon-blue"] .header-glass-bar,[data-theme="pigeon-blue"] .spotlight-card { border-color:transparent; }
+[data-theme="graphite"] .floating-dock-bar,[data-theme="graphite"] .header-glass-bar,[data-theme="graphite"] .spotlight-card { border-color:transparent; }
 [data-theme="pigeon-blue"] .dock-item:hover,[data-theme="pigeon-blue"] .dock-item.is-active,[data-theme="pigeon-blue"] .dock-item.is-bookmarked { color:#f1e8d7; background:rgba(222,211,187,.13); }
+[data-theme="graphite"] .dock-item:hover,[data-theme="graphite"] .dock-item.is-active,[data-theme="graphite"] .dock-item.is-bookmarked { color:#e4e4e4; background:rgba(204,204,204,.13); }
 [data-theme="pigeon-blue"] .dock-visibility-bead.is-active { background:#d9cbb0; color:#172b3e; }
+[data-theme="graphite"] .dock-visibility-bead.is-active { background:#c4c4c4; color:#373737; }
 [data-theme="pigeon-blue"] .dock-visibility-bead { background:#cbd2d8; color:#263744; border:1px solid rgba(217,203,176,.3); }
+[data-theme="graphite"] .dock-visibility-bead { background:#d2d2d2; color:#424242; border:1px solid rgba(196,196,196,.3); }
 [data-theme="pigeon-blue"] .dock-visibility-bead.is-active { background:#d9cbb0; color:#25313b; }
+[data-theme="graphite"] .dock-visibility-bead.is-active { background:#c4c4c4; color:#3d3d3d; }
 [data-theme="pigeon-blue"] .reader-speed-badge { background:#d9cbb0; border-color:transparent; color:#172b3e; }
+[data-theme="graphite"] .reader-speed-badge { background:#c4c4c4; border-color:transparent; color:#373737; }
 
 [data-theme="pigeon-blue"] :is(button,input,select,textarea,[role="button"],.spotlight-card) { border-color:transparent; }
+
+[data-theme="graphite"] :is(button,input,select,textarea,[role="button"],.spotlight-card) { border-color:transparent; }
 html[data-theme="pigeon-blue"] * { border-color: transparent !important; }
+html[data-theme="graphite"] * { border-color: transparent !important; }
 html[data-theme="pigeon-blue"] .floating-dock-bar {
   border-color: rgba(222,211,187,.58) !important;
   box-shadow: 0 0 0 1px rgba(222,211,187,.1), 0 16px 36px -8px rgba(0,0,0,.3);
+}
+html[data-theme="graphite"] .floating-dock-bar {
+  border-color: rgba(204,204,204,.58) !important;
+  box-shadow: 0 0 0 1px rgba(204,204,204,.1), 0 16px 36px -8px rgba(13,13,13,.3);
 }
 
 /* Keep the backup and khatma tools in the Pigeon Blue beige palette. */
@@ -252,6 +287,36 @@ html[data-theme="pigeon-blue"] .gold-icon {
   color: #e7ddc8;
 }
 
+/* Keep the backup and khatma tools in the Pigeon Blue beige palette. */
+html[data-theme="graphite"] .account-eyebrow,
+html[data-theme="graphite"] .account-link-button,
+html[data-theme="graphite"] .account-hint code,
+html[data-theme="graphite"] .account-legal-links a,
+html[data-theme="graphite"] .drive-copy,
+html[data-theme="graphite"] .drive-icon-wrap,
+html[data-theme="graphite"] .drive-restore-action,
+html[data-theme="graphite"] .khatma-section-tabs button.is-active,
+html[data-theme="graphite"] .custom-wird-intro strong,
+html[data-theme="graphite"] .custom-wird-row-index,
+html[data-theme="graphite"] .custom-wird-picker-trigger > svg,
+html[data-theme="graphite"] .custom-wird-stepper button,
+html[data-theme="graphite"] .custom-wird-add,
+html[data-theme="graphite"] .custom-wird-picker-search,
+html[data-theme="graphite"] .custom-wird-picker-option[data-highlighted],
+html[data-theme="graphite"] .custom-wird-picker-option[data-selected],
+html[data-theme="graphite"] .custom-wird-summary strong,
+html[data-theme="graphite"] .khatma-division-help strong,
+html[data-theme="graphite"] .khatma-current-empty,
+html[data-theme="graphite"] .khatma-edit-current-btn,
+html[data-theme="graphite"] .saved-plan-topline b,
+html[data-theme="graphite"] .khatma-schedule-head span,
+html[data-theme="graphite"] .khatma-schedule-row span,
+html[data-theme="graphite"] .range-text strong,
+html[data-theme="graphite"] .stat-num,
+html[data-theme="graphite"] .gold-icon {
+  color: #d8d8d8;
+}
+
 html[data-theme="pigeon-blue"] .account-link-button,
 html[data-theme="pigeon-blue"] .account-legal-links a,
 html[data-theme="pigeon-blue"] .drive-restore-action,
@@ -267,6 +332,21 @@ html[data-theme="pigeon-blue"] .duration-pill.is-active {
   background-color: color-mix(in srgb, #d9cbb0 14%, #122b46);
 }
 
+html[data-theme="graphite"] .account-link-button,
+html[data-theme="graphite"] .account-legal-links a,
+html[data-theme="graphite"] .drive-restore-action,
+html[data-theme="graphite"] .custom-wird-row-index,
+html[data-theme="graphite"] .custom-wird-stepper button,
+html[data-theme="graphite"] .custom-wird-add,
+html[data-theme="graphite"] .custom-wird-picker-search,
+html[data-theme="graphite"] .custom-wird-picker-option[data-highlighted],
+html[data-theme="graphite"] .custom-wird-picker-option[data-selected],
+html[data-theme="graphite"] .khatma-section-tabs button.is-active,
+html[data-theme="graphite"] .khatma-edit-current-btn,
+html[data-theme="graphite"] .duration-pill.is-active {
+  background-color: color-mix(in srgb, #c4c4c4 14%, #393939);
+}
+
 html[data-theme="pigeon-blue"] .drive-card,
 html[data-theme="pigeon-blue"] .account-user-card,
 html[data-theme="pigeon-blue"] .custom-wird-intro,
@@ -274,6 +354,16 @@ html[data-theme="pigeon-blue"] .custom-wird-row,
 html[data-theme="pigeon-blue"] .khatma-division-help,
 html[data-theme="pigeon-blue"] .khatma-plan-chip {
   background: linear-gradient(145deg, rgba(217,203,176,.09), rgba(18,43,70,.72));
+  box-shadow: none;
+}
+
+html[data-theme="graphite"] .drive-card,
+html[data-theme="graphite"] .account-user-card,
+html[data-theme="graphite"] .custom-wird-intro,
+html[data-theme="graphite"] .custom-wird-row,
+html[data-theme="graphite"] .khatma-division-help,
+html[data-theme="graphite"] .khatma-plan-chip {
+  background: linear-gradient(145deg, rgba(196,196,196,.09), rgba(57,57,57,.72));
   box-shadow: none;
 }
 
@@ -285,15 +375,34 @@ html[data-theme="pigeon-blue"] .khatma-days-input {
   color: #edf2f7;
 }
 
+html[data-theme="graphite"] .custom-wird-picker-trigger,
+html[data-theme="graphite"] .custom-wird-stepper,
+html[data-theme="graphite"] .duration-pill,
+html[data-theme="graphite"] .khatma-days-input {
+  background: rgba(196,196,196,.08);
+  color: #f2f2f2;
+}
+
 html[data-theme="pigeon-blue"] .custom-wird-picker-menu {
   background: #17334f;
   color: #edf2f7;
+}
+
+html[data-theme="graphite"] .custom-wird-picker-menu {
+  background: #404040;
+  color: #f2f2f2;
 }
 
 html[data-theme="pigeon-blue"] .custom-wird-picker-option,
 html[data-theme="pigeon-blue"] .custom-wird-row-head > strong,
 html[data-theme="pigeon-blue"] .saved-plan-topline strong {
   color: #e7ddc8;
+}
+
+html[data-theme="graphite"] .custom-wird-picker-option,
+html[data-theme="graphite"] .custom-wird-row-head > strong,
+html[data-theme="graphite"] .saved-plan-topline strong {
+  color: #d8d8d8;
 }
 
 html[data-theme="pigeon-blue"] .custom-wird-row-fields label,
@@ -307,11 +416,30 @@ html[data-theme="pigeon-blue"] .account-google-auth p {
   color: #bdc5ce;
 }
 
+html[data-theme="graphite"] .custom-wird-row-fields label,
+html[data-theme="graphite"] .custom-wird-repeat-field,
+html[data-theme="graphite"] .custom-wird-surah-field,
+html[data-theme="graphite"] .custom-wird-intro p,
+html[data-theme="graphite"] .custom-wird-summary,
+html[data-theme="graphite"] .drive-copy small,
+html[data-theme="graphite"] .drive-status,
+html[data-theme="graphite"] .account-google-auth p {
+  color: #c6c6c6;
+}
+
 html[data-theme="pigeon-blue"] .start-wird-btn,
 html[data-theme="pigeon-blue"] .khatma-save-btn {
   border-color: var(--gold);
   background: linear-gradient(135deg, var(--gold) 0%, #b8a67e 100%);
   color: #2b2308;
+  box-shadow: none;
+}
+
+html[data-theme="graphite"] .start-wird-btn,
+html[data-theme="graphite"] .khatma-save-btn {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, var(--gold) 0%, #9b9b9b 100%);
+  color: #262626;
   box-shadow: none;
 }
 
@@ -321,12 +449,28 @@ html[data-theme="pigeon-blue"] :is(.account-dialog, .khatma-modal-card) {
   -webkit-user-select: none;
 }
 
+/* Refined account and custom wird surfaces for the blue theme. */
+html[data-theme="graphite"] :is(.account-dialog, .khatma-modal-card) {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 html[data-theme="pigeon-blue"] :is(.account-dialog, .khatma-modal-card) :is(input, textarea, [contenteditable="true"]) {
   user-select: text;
   -webkit-user-select: text;
 }
 
+html[data-theme="graphite"] :is(.account-dialog, .khatma-modal-card) :is(input, textarea, [contenteditable="true"]) {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
 html[data-theme="pigeon-blue"] :is(.account-dialog, .khatma-modal-card) ::selection {
+  background: transparent;
+  color: inherit;
+}
+
+html[data-theme="graphite"] :is(.account-dialog, .khatma-modal-card) ::selection {
   background: transparent;
   color: inherit;
 }
@@ -337,12 +481,26 @@ html[data-theme="pigeon-blue"] .account-dialog {
   box-shadow: 0 26px 80px rgba(2,12,22,.48);
 }
 
+html[data-theme="graphite"] .account-dialog {
+  background: linear-gradient(155deg, #3f3f3f, #353535 72%);
+  border: 1px solid rgba(196,196,196,.12);
+  box-shadow: 0 26px 80px rgba(25,25,25,.48);
+}
+
 html[data-theme="pigeon-blue"] .account-header {
   border-bottom-color: rgba(217,203,176,.1);
 }
 
+html[data-theme="graphite"] .account-header {
+  border-bottom-color: rgba(196,196,196,.1);
+}
+
 html[data-theme="pigeon-blue"] .account-tabs {
   background: rgba(5,20,34,.32);
+}
+
+html[data-theme="graphite"] .account-tabs {
+  background: rgba(32,32,32,.32);
 }
 
 html[data-theme="pigeon-blue"] .drive-card {
@@ -352,9 +510,22 @@ html[data-theme="pigeon-blue"] .drive-card {
   background: linear-gradient(145deg, rgba(217,203,176,.075), rgba(8,27,45,.32));
 }
 
+html[data-theme="graphite"] .drive-card {
+  padding: 18px;
+  border: 1px solid rgba(196,196,196,.14);
+  border-radius: 17px;
+  background: linear-gradient(145deg, rgba(196,196,196,.075), rgba(39,39,39,.32));
+}
+
 html[data-theme="pigeon-blue"] .drive-card::before {
   width: 3px;
   background: #d9cbb0;
+  opacity: .8;
+}
+
+html[data-theme="graphite"] .drive-card::before {
+  width: 3px;
+  background: #c4c4c4;
   opacity: .8;
 }
 
@@ -364,7 +535,17 @@ html[data-theme="pigeon-blue"] .drive-copy {
   background: rgba(194,202,210,.08);
 }
 
+html[data-theme="graphite"] .drive-copy {
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(202,202,202,.08);
+}
+
 html[data-theme="pigeon-blue"] .drive-actions {
+  gap: 10px;
+}
+
+html[data-theme="graphite"] .drive-actions {
   gap: 10px;
 }
 
@@ -373,10 +554,21 @@ html[data-theme="pigeon-blue"] .drive-action.account-primary {
   color: #172b3e;
 }
 
+html[data-theme="graphite"] .drive-action.account-primary {
+  background: #c4c4c4;
+  color: #373737;
+}
+
 html[data-theme="pigeon-blue"] .drive-action.account-secondary,
 html[data-theme="pigeon-blue"] .drive-restore-action {
   background: rgba(217,203,176,.08);
   color: #e7ddc8;
+}
+
+html[data-theme="graphite"] .drive-action.account-secondary,
+html[data-theme="graphite"] .drive-restore-action {
+  background: rgba(196,196,196,.08);
+  color: #d8d8d8;
 }
 
 html[data-theme="pigeon-blue"] .custom-wird-intro,
@@ -386,13 +578,29 @@ html[data-theme="pigeon-blue"] .custom-wird-row {
   background: linear-gradient(145deg, rgba(217,203,176,.055), rgba(8,27,45,.28));
 }
 
+html[data-theme="graphite"] .custom-wird-intro,
+html[data-theme="graphite"] .custom-wird-row {
+  border: 1px solid rgba(196,196,196,.12);
+  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(196,196,196,.055), rgba(39,39,39,.28));
+}
+
 html[data-theme="pigeon-blue"] .custom-wird-row {
+  padding: 14px;
+  gap: 12px;
+}
+
+html[data-theme="graphite"] .custom-wird-row {
   padding: 14px;
   gap: 12px;
 }
 
 html[data-theme="pigeon-blue"] .custom-wird-row-head > strong {
   color: #f0e8d9;
+}
+
+html[data-theme="graphite"] .custom-wird-row-head > strong {
+  color: #e4e4e4;
 }
 
 html[data-theme="pigeon-blue"] :is(.custom-wird-picker-trigger, .custom-wird-stepper, .khatma-days-input) {
@@ -402,6 +610,13 @@ html[data-theme="pigeon-blue"] :is(.custom-wird-picker-trigger, .custom-wird-ste
   color: #edf2f7;
 }
 
+html[data-theme="graphite"] :is(.custom-wird-picker-trigger, .custom-wird-stepper, .khatma-days-input) {
+  border: 1px solid rgba(196,196,196,.12);
+  border-radius: 10px;
+  background: rgba(36,36,36,.38);
+  color: #f2f2f2;
+}
+
 html[data-theme="pigeon-blue"] .custom-wird-add {
   border: 1px dashed rgba(217,203,176,.25);
   border-radius: 12px;
@@ -409,10 +624,23 @@ html[data-theme="pigeon-blue"] .custom-wird-add {
   color: #e7ddc8;
 }
 
+html[data-theme="graphite"] .custom-wird-add {
+  border: 1px dashed rgba(196,196,196,.25);
+  border-radius: 12px;
+  background: rgba(196,196,196,.055);
+  color: #d8d8d8;
+}
+
 html[data-theme="pigeon-blue"] .custom-wird-save {
   border: 1px solid rgba(217,203,176,.2);
   background: rgba(217,203,176,.07);
   color: #e7ddc8;
+}
+
+html[data-theme="graphite"] .custom-wird-save {
+  border: 1px solid rgba(196,196,196,.2);
+  background: rgba(196,196,196,.07);
+  color: #d8d8d8;
 }
 
 html[data-theme="pigeon-blue"] .custom-wird-start,
@@ -424,7 +652,20 @@ html[data-theme="pigeon-blue"] .khatma-save-btn {
   box-shadow: 0 5px 14px rgba(0,0,0,.12);
 }
 
+html[data-theme="graphite"] .custom-wird-start,
+html[data-theme="graphite"] .khatma-save-btn {
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold) 0%, #9b9b9b 100%);
+  color: #262626;
+  box-shadow: 0 5px 14px rgba(13,13,13,.12);
+}
+
 html[data-theme="pigeon-blue"] :is(.account-dialog, .khatma-modal-card) :is(button, a):active {
+  filter: brightness(.96);
+}
+
+html[data-theme="graphite"] :is(.account-dialog, .khatma-modal-card) :is(button, a):active {
   filter: brightness(.96);
 }
 
@@ -438,9 +679,24 @@ html[data-theme="grey"] {
   --card-bg: rgba(250,251,252,.82);
 }
 
+/* Soft neutral grey theme with warm stone accents. */
+html[data-theme="green"] {
+  color-scheme: light;
+  --shell-bg: #dbe8e0;
+  --ink: #294131;
+  --gold: #4f7a5a;
+  --gold-glow: rgba(79,122,90,.18);
+  --card-bg: rgba(250,252,251,.82);
+}
+
 html[data-theme="grey"] body {
   color: #343a40;
   background: radial-gradient(ellipse at 50% 0%, #f1f2f3, #e5e7e9 58%, #d8dce0 100%);
+}
+
+html[data-theme="green"] body {
+  color: #294131;
+  background: radial-gradient(ellipse at 50% 0%, #e9f1ec, #dbe8e0 58%, #cee0d4 100%);
 }
 
 html[data-theme="grey"] .reader-manuscript-wrapper:not(.is-mushaf-page-shell) {
@@ -449,15 +705,32 @@ html[data-theme="grey"] .reader-manuscript-wrapper:not(.is-mushaf-page-shell) {
   border-color: rgba(96,106,116,.18);
 }
 
+html[data-theme="green"] .reader-manuscript-wrapper:not(.is-mushaf-page-shell) {
+  background: linear-gradient(145deg, rgba(250,252,251,.96), rgba(224,235,228,.96));
+  color: #294131;
+  border-color: rgba(79,123,94,.18);
+}
+
 html[data-theme="grey"] :is(.header-glass-bar, .floating-dock-bar, .khatma-modal-card, .search-modal-box, .account-dialog, .statistics-modal, .surah-drawer-sheet, .reading-confirm-dialog) {
   background-color: rgba(246,247,248,.97);
   color: #343a40;
   border-color: rgba(96,106,116,.17);
 }
 
+html[data-theme="green"] :is(.header-glass-bar, .floating-dock-bar, .khatma-modal-card, .search-modal-box, .account-dialog, .statistics-modal, .surah-drawer-sheet, .reading-confirm-dialog) {
+  background-color: rgba(239,245,241,.97);
+  color: #294131;
+  border-color: rgba(79,123,94,.17);
+}
+
 html[data-theme="grey"] :is(.account-form input, .duration-pill, .khatma-days-input, .juz-hizb-indicator) {
   background-color: rgba(115,125,135,.09);
   color: #343a40;
+}
+
+html[data-theme="green"] :is(.account-form input, .duration-pill, .khatma-days-input, .juz-hizb-indicator) {
+  background-color: rgba(94,146,111,.09);
+  color: #294131;
 }
 
 html[data-theme="grey"] :is(.drive-card, .custom-wird-intro, .custom-wird-row, .khatma-division-help, .khatma-plan-chip) {
@@ -466,9 +739,20 @@ html[data-theme="grey"] :is(.drive-card, .custom-wird-intro, .custom-wird-row, .
   box-shadow: none;
 }
 
+html[data-theme="green"] :is(.drive-card, .custom-wird-intro, .custom-wird-row, .khatma-division-help, .khatma-plan-chip) {
+  border-color: rgba(79,123,94,.16);
+  background: linear-gradient(145deg, rgba(255,255,255,.64), rgba(210,226,215,.54));
+  box-shadow: none;
+}
+
 html[data-theme="grey"] :is(.custom-wird-picker-trigger, .custom-wird-stepper, .custom-wird-add) {
   background: rgba(116,126,136,.09);
   color: #343a40;
+}
+
+html[data-theme="green"] :is(.custom-wird-picker-trigger, .custom-wird-stepper, .custom-wird-add) {
+  background: rgba(94,147,112,.09);
+  color: #294131;
 }
 
 html[data-theme="grey"] .drive-copy,
@@ -484,10 +768,29 @@ html[data-theme="grey"] .custom-wird-summary strong {
   color: #555e66;
 }
 
+html[data-theme="green"] .drive-copy,
+html[data-theme="green"] .drive-copy small,
+html[data-theme="green"] .custom-wird-row-head > strong,
+html[data-theme="green"] .custom-wird-row-fields label,
+html[data-theme="green"] .custom-wird-repeat-field,
+html[data-theme="green"] .custom-wird-surah-field,
+html[data-theme="green"] .custom-wird-intro strong,
+html[data-theme="green"] .custom-wird-intro p,
+html[data-theme="green"] .custom-wird-summary,
+html[data-theme="green"] .custom-wird-summary strong {
+  color: #456c52;
+}
+
 html[data-theme="grey"] .drive-copy {
   padding: 4px 8px;
   border-radius: 8px;
   background: rgba(117,127,137,.08);
+}
+
+html[data-theme="green"] .drive-copy {
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(95,149,113,.08);
 }
 
 html[data-theme="grey"] .drive-action.account-primary,
@@ -499,9 +802,22 @@ html[data-theme="grey"] .start-wird-btn {
   box-shadow: none;
 }
 
+html[data-theme="green"] .drive-action.account-primary,
+html[data-theme="green"] .khatma-save-btn,
+html[data-theme="green"] .start-wird-btn {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, #a2c3ad 0%, #4f7a5a 100%);
+  color: #18261d;
+  box-shadow: none;
+}
+
 html[data-theme="grey"] .dock-item { color: #424950; }
+
+html[data-theme="green"] .dock-item { color: #35533f; }
 html[data-theme="grey"] .dock-visibility-bead { background: #d0d4d8; color: #35414b; border: 1px solid rgba(73,84,94,.2); }
+html[data-theme="green"] .dock-visibility-bead { background: #c4d9cb; color: #2e4837; border: 1px solid rgba(61,96,73,.2); }
 html[data-theme="grey"] .dock-visibility-bead.is-active { background: #c9c0ae; color: #343a40; }
+html[data-theme="green"] .dock-visibility-bead.is-active { background: #a6c6b1; color: #294131; }
 
 /* Use neutral grey surfaces for feature windows in the Pigeon Blue theme. */
 html[data-theme="pigeon-blue"] {
@@ -512,7 +828,21 @@ html[data-theme="pigeon-blue"] {
   --feature-muted: #c0c7cd;
 }
 
+/* Use neutral grey surfaces for feature windows in the Pigeon Blue theme. */
+html[data-theme="graphite"] {
+  --feature-window: #454545;
+  --feature-card: #4e4e4e;
+  --feature-control: #5a5a5a;
+  --feature-text: #ececec;
+  --feature-muted: #c6c6c6;
+}
+
 html[data-theme="pigeon-blue"] body :is(.khatma-modal-card, .account-dialog, .search-modal-box, .statistics-modal, .surah-drawer-sheet, .reading-confirm-dialog, .account-confirm-dialog) {
+  background: var(--feature-window);
+  color: var(--feature-text);
+}
+
+html[data-theme="graphite"] body :is(.khatma-modal-card, .account-dialog, .search-modal-box, .statistics-modal, .surah-drawer-sheet, .reading-confirm-dialog, .account-confirm-dialog) {
   background: var(--feature-window);
   color: var(--feature-text);
 }
@@ -522,7 +852,17 @@ html[data-theme="pigeon-blue"] body :is(.custom-wird-heading, .custom-wird-intro
   color: var(--feature-text);
 }
 
+html[data-theme="graphite"] body :is(.custom-wird-heading, .custom-wird-intro, .custom-wird-row, .custom-wird-summary, .custom-wird-picker-menu, .khatma-hero-card, .today-wird-card, .khatma-schedule, .khatma-division-help, .khatma-plan-picker, .khatma-plan-chip, .drive-card, .account-user-card, .search-result, .statistics-card, .surah-drawer-section) {
+  background: var(--feature-card);
+  color: var(--feature-text);
+}
+
 html[data-theme="pigeon-blue"] body :is(.custom-wird-picker-trigger, .custom-wird-stepper, .custom-wird-name-field .khatma-days-input, .account-form input, .khatma-days-input, .duration-pill, .juz-hizb-indicator, .custom-wird-picker-search) {
+  background: var(--feature-control);
+  color: var(--feature-text);
+}
+
+html[data-theme="graphite"] body :is(.custom-wird-picker-trigger, .custom-wird-stepper, .custom-wird-name-field .khatma-days-input, .account-form input, .khatma-days-input, .duration-pill, .juz-hizb-indicator, .custom-wird-picker-search) {
   background: var(--feature-control);
   color: var(--feature-text);
 }
@@ -531,13 +871,26 @@ html[data-theme="pigeon-blue"] body :is(.custom-wird-heading-copy > strong, .cus
   color: var(--feature-text);
 }
 
+html[data-theme="graphite"] body :is(.custom-wird-heading-copy > strong, .custom-wird-row-title > strong, .custom-wird-summary-copy > strong, .custom-wird-name-field .section-label, .account-dialog h2, .khatma-modal-card h3, .search-modal-box h2, .statistics-modal h2, .surah-drawer-sheet h2) {
+  color: var(--feature-text);
+}
+
 html[data-theme="pigeon-blue"] body :is(.custom-wird-heading-copy p, .custom-wird-row-title > span, .custom-wird-summary-copy > small, .drive-copy small, .account-hint, .account-google-auth p, .khatma-modal-card .stat-label, .khatma-modal-card .stat-sub, .khatma-modal-card .hero-text-wrap p) {
+  color: var(--feature-muted);
+}
+
+html[data-theme="graphite"] body :is(.custom-wird-heading-copy p, .custom-wird-row-title > span, .custom-wird-summary-copy > small, .drive-copy small, .account-hint, .account-google-auth p, .khatma-modal-card .stat-label, .khatma-modal-card .stat-sub, .khatma-modal-card .hero-text-wrap p) {
   color: var(--feature-muted);
 }
 
 html[data-theme="pigeon-blue"] body :is(.custom-wird-actions .custom-wird-start, .khatma-modal-card .khatma-save-btn, .khatma-modal-card .start-wird-btn, .account-dialog .account-primary) {
   background: linear-gradient(135deg, var(--gold) 0%, #b8a67e 100%);
   color: #2b2308;
+}
+
+html[data-theme="graphite"] body :is(.custom-wird-actions .custom-wird-start, .khatma-modal-card .khatma-save-btn, .khatma-modal-card .start-wird-btn, .account-dialog .account-primary) {
+  background: linear-gradient(135deg, var(--gold) 0%, #9b9b9b 100%);
+  color: #262626;
 }
 
 /* Give Mushaf mode a neutral paper-grey surface while leaving SVG Quran ink unchanged. */
@@ -547,13 +900,36 @@ html[data-theme="pigeon-blue"] body .reader-manuscript-wrapper.is-mushaf-page-sh
   box-shadow: 0 22px 64px rgba(5,17,30,.24);
 }
 
+/* Give Mushaf mode a neutral paper-grey surface while leaving SVG Quran ink unchanged. */
+html[data-theme="graphite"] body .reader-manuscript-wrapper.is-mushaf-page-shell.mushaf-react-bits-frame {
+  background: linear-gradient(180deg, #eeeeee, #e2e2e2);
+  border: 0;
+  box-shadow: 0 22px 64px rgba(30,30,30,.24);
+}
+
 html[data-theme="grey"] body .reader-manuscript-wrapper.is-mushaf-page-shell.mushaf-react-bits-frame {
   background: linear-gradient(180deg, #eceeef, #dfe3e6);
   border: 0;
   box-shadow: 0 22px 64px rgba(5,17,30,.24);
 }
 
+html[data-theme="green"] body .reader-manuscript-wrapper.is-mushaf-page-shell.mushaf-react-bits-frame {
+  background: linear-gradient(180deg, #e3ede7, #d6e5db);
+  border: 0;
+  box-shadow: 0 22px 64px rgba(10,15,11,.24);
+}
+
 html[data-theme="pigeon-blue"] body .mushaf-page-aurora,
+html[data-theme="grey"] body .mushaf-page-aurora {
+  display: none;
+}
+
+html[data-theme="pigeon-blue"] body .mushaf-page-aurora,
+html[data-theme="green"] body .mushaf-page-aurora {
+  display: none;
+}
+
+html[data-theme="graphite"] body .mushaf-page-aurora,
 html[data-theme="grey"] body .mushaf-page-aurora {
   display: none;
 }
@@ -564,12 +940,44 @@ html[data-theme="grey"] body .mushaf-page-heading {
   color: #343a40;
 }
 
+html[data-theme="pigeon-blue"] body .mushaf-page-heading,
+html[data-theme="green"] body .mushaf-page-heading {
+  background: linear-gradient(105deg, rgba(203,222,209,.92), rgba(230,239,233,.96), rgba(203,222,209,.92));
+  color: #294131;
+}
+
+html[data-theme="graphite"] body .mushaf-page-heading,
+html[data-theme="grey"] body .mushaf-page-heading {
+  background: linear-gradient(105deg, rgba(218,218,218,.92), rgba(240,240,240,.96), rgba(218,218,218,.92));
+  color: #474747;
+}
+
 html[data-theme="pigeon-blue"] body .mushaf-svg-page,
 html[data-theme="grey"] body .mushaf-svg-page {
   background: #e5e7e9;
 }
 
+html[data-theme="pigeon-blue"] body .mushaf-svg-page,
+html[data-theme="green"] body .mushaf-svg-page {
+  background: #dbe8e0;
+}
+
+html[data-theme="graphite"] body .mushaf-svg-page,
+html[data-theme="grey"] body .mushaf-svg-page {
+  background: #e7e7e7;
+}
+
 html[data-theme="pigeon-blue"] body .mushaf-svg-artwork,
+html[data-theme="grey"] body .mushaf-svg-artwork {
+  filter: none;
+}
+
+html[data-theme="pigeon-blue"] body .mushaf-svg-artwork,
+html[data-theme="green"] body .mushaf-svg-artwork {
+  filter: none;
+}
+
+html[data-theme="graphite"] body .mushaf-svg-artwork,
 html[data-theme="grey"] body .mushaf-svg-artwork {
   filter: none;
 }
@@ -586,6 +994,18 @@ html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-picker-optio
   box-shadow: none;
 }
 
+/* Beige selection and form controls inside blue-theme feature windows. */
+html[data-theme="graphite"] body .khatma-modal-card .duration-pill.is-active,
+html[data-theme="graphite"] body .khatma-modal-card .khatma-section-tabs button.is-active,
+html[data-theme="graphite"] body .khatma-modal-card .khatma-plan-chip.is-active,
+html[data-theme="graphite"] body .khatma-modal-card .custom-wird-picker-option[data-selected],
+html[data-theme="graphite"] body .khatma-modal-card .custom-wird-picker-option[data-highlighted] {
+  background: #c4c4c4;
+  color: #3d3d3d;
+  border-color: #c4c4c4;
+  box-shadow: none;
+}
+
 html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-name-field .khatma-days-input,
 html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-picker-trigger,
 html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-stepper,
@@ -595,14 +1015,33 @@ html[data-theme="pigeon-blue"] body .khatma-modal-card .juz-hizb-indicator {
   color: var(--feature-text);
   border-color: rgba(217,203,176,.16);
 }
+
+html[data-theme="graphite"] body .khatma-modal-card .custom-wird-name-field .khatma-days-input,
+html[data-theme="graphite"] body .khatma-modal-card .custom-wird-picker-trigger,
+html[data-theme="graphite"] body .khatma-modal-card .custom-wird-stepper,
+html[data-theme="graphite"] body .khatma-modal-card .khatma-days-input,
+html[data-theme="graphite"] body .khatma-modal-card .juz-hizb-indicator {
+  background: var(--feature-control);
+  color: var(--feature-text);
+  border-color: rgba(196,196,196,.16);
+}
 html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-picker-trigger > svg,
 html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-name-field .section-label svg {
   color: #c0c7cd;
+}
+html[data-theme="graphite"] body .khatma-modal-card .custom-wird-picker-trigger > svg,
+html[data-theme="graphite"] body .khatma-modal-card .custom-wird-name-field .section-label svg {
+  color: #c6c6c6;
 }
 
 html[data-theme="pigeon-blue"] body .khatma-modal-card .custom-wird-stepper button {
   background: rgba(217,203,176,.12);
   color: #d9cbb0;
+}
+
+html[data-theme="graphite"] body .khatma-modal-card .custom-wird-stepper button {
+  background: rgba(196,196,196,.12);
+  color: #c4c4c4;
 }
 
 html[data-theme="pigeon-blue"] body .khatma-modal-card .khatma-stats-grid .stat-card {
@@ -611,18 +1050,40 @@ html[data-theme="pigeon-blue"] body .khatma-modal-card .khatma-stats-grid .stat-
   border-color: rgba(217,203,176,.12);
 }
 
+html[data-theme="graphite"] body .khatma-modal-card .khatma-stats-grid .stat-card {
+  background: #4e4e4e;
+  color: #d8d8d8;
+  border-color: rgba(196,196,196,.12);
+}
+
 html[data-theme="pigeon-blue"] body .khatma-modal-card .stat-ring-track {
   stroke: rgba(240,237,231,.14);
+}
+
+html[data-theme="graphite"] body .khatma-modal-card .stat-ring-track {
+  stroke: rgba(236,236,236,.14);
 }
 
 html[data-theme="pigeon-blue"] body .khatma-modal-card .stat-ring-value {
   stroke: #d9cbb0;
 }
 
+html[data-theme="graphite"] body .khatma-modal-card .stat-ring-value {
+  stroke: #c4c4c4;
+}
+
 html[data-theme="pigeon-blue"] body .khatma-modal-card .stat-ring-copy strong {
   color: #e7ddc8;
 }
 
+html[data-theme="graphite"] body .khatma-modal-card .stat-ring-copy strong {
+  color: #d8d8d8;
+}
+
 html[data-theme="pigeon-blue"] body .khatma-modal-card .stat-ring-copy small {
   color: #c0c7cd;
+}
+
+html[data-theme="graphite"] body .khatma-modal-card .stat-ring-copy small {
+  color: #c6c6c6;
 }

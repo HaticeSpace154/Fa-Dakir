@@ -14,6 +14,7 @@ const STORAGE_KEYS = {
   fontSize: 'quranWarsh.fontSize',
   recitation: 'quranWarsh.recitation',
   customWird: 'quranWarsh.customWird',
+  autoScrollMinutes: 'quranWarsh.autoScrollMinutes',
 };
 
 function normalizeCustomWird(saved, index = 0) {
@@ -163,6 +164,20 @@ export function setStoredTheme(theme) {
   try {
     localStorage.setItem(STORAGE_KEYS.theme, theme);
   } catch {}
+}
+
+// Last duration (in minutes) chosen for the timed auto-scroll.
+export function getStoredAutoScrollMinutes() {
+  try {
+    const saved = Math.round(Number(localStorage.getItem(STORAGE_KEYS.autoScrollMinutes)));
+    return Number.isFinite(saved) && saved >= 1 && saved <= 180 ? saved : 30;
+  } catch { return 30; }
+}
+
+export function setStoredAutoScrollMinutes(minutes) {
+  const value = Math.max(1, Math.min(180, Math.round(Number(minutes) || 30)));
+  try { localStorage.setItem(STORAGE_KEYS.autoScrollMinutes, String(value)); } catch {}
+  return value;
 }
 
 export function getStoredFontSize() {

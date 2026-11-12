@@ -18,7 +18,7 @@
       try {
         var urlTheme = null;
         try { urlTheme = new URLSearchParams(window.location.search).get('theme'); } catch (e) {}
-        var themes = { light: '#f9f6f0', sepia: '#f2e8d5', 'pigeon-blue': '#122b46', grey: '#e5e7e9', dark: '#0a0a0a', mono: '#0a0a0a' };
+        var themes = { light: '#f9f6f0', sepia: '#f2e8d5', 'pigeon-blue': '#122b46', grey: '#e5e7e9', green: '#dbe8e0', graphite: '#3a3a3a', dark: '#0a0a0a', mono: '#0a0a0a' };
         if (urlTheme && themes[urlTheme]) {
           // ?theme=... forces the theme on this origin and persists it.
           localStorage.setItem('quranWarsh.theme', urlTheme === 'mono' ? 'dark' : urlTheme);
@@ -29,7 +29,7 @@
           document.documentElement.setAttribute('data-theme', themeName);
           document.documentElement.style.setProperty('--shell-bg', themes[m]);
           document.querySelector('meta[name="theme-color"]').setAttribute('content', themes[m]);
-          document.querySelector('meta[name="color-scheme"]').setAttribute('content', themeName === 'dark' || themeName === 'pigeon-blue' ? 'dark' : 'light');
+          document.querySelector('meta[name="color-scheme"]').setAttribute('content', themeName === 'dark' || themeName === 'pigeon-blue' || themeName === 'graphite' ? 'dark' : 'light');
         }
       } catch (e) {}
     </script>

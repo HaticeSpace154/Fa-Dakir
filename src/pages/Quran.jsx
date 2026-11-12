@@ -37,12 +37,14 @@ const StatisticsModal = lazy(() => import('../components/StatisticsModal'));
 const AccountModal = lazy(() => import('../components/AccountModal'));
 const RecitationModal = lazy(() => import('../components/RecitationModal'));
 
-const APP_THEMES = ['light', 'sepia', 'pigeon-blue', 'grey', 'dark'];
+const APP_THEMES = ['light', 'sepia', 'pigeon-blue', 'grey', 'green', 'graphite', 'dark'];
 const THEME_BACKGROUNDS = {
   light: '#f9f6f0',
   sepia: '#f2e8d5',
   'pigeon-blue': '#122b46',
   grey: '#e5e7e9',
+  green: '#dbe8e0',
+  graphite: '#3a3a3a',
   dark: '#0a0a0a',
 };
 
@@ -76,7 +78,7 @@ export default function Quran() {
   const [currentMushafPage, setCurrentMushafPage] = useState(initialPosition.page);
   const [readingPercent, setReadingPercent] = useState(Math.round((initialPosition.page / 604) * 100));
   const [theme, setTheme] = useState(getInitialTheme);
-  const isDarkTheme = theme === 'dark' || theme === 'pigeon-blue';
+  const isDarkTheme = theme === 'dark' || theme === 'pigeon-blue' || theme === 'graphite';
   const isZenMode = useReaderStore((state) => state.isZenMode);
   const setIsZenMode = useReaderStore((state) => state.setZenMode);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -85,6 +87,18 @@ export default function Quran() {
   const setReaderViewMode = useReaderStore((state) => state.setViewMode);
   const [autoScrollSpeed, setAutoScrollSpeed] = useState(0);
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+  // { minutes, token } while a timed auto-scroll is configured; null means manual speed mode.
+  const [autoScrollTimer, setAutoScrollTimer] = useState(null);
+  const handleStartScrollTimer = useCallback((minutes) => {
+    setAutoScrollTimer({ minutes, token: Date.now() });
+    setIsAutoScrolling(true);
+    // Same as double-tap start: hide the controls so the text can be read undisturbed.
+    setIsZenMode(true);
+  }, [setIsZenMode]);
+  const handleStopScrollTimer = useCallback(() => {
+    setAutoScrollTimer(null);
+    setIsAutoScrolling(false);
+  }, []);
   const [customWirdSequence, setCustomWirdSequence] = useState([]);
   const [customWirdIndex, setCustomWirdIndex] = useState(0);
   const [isCustomWirdActive, setIsCustomWirdActive] = useState(false);
@@ -346,7 +360,7 @@ export default function Quran() {
         onOpenAccount={() => setIsAccountOpen(true)}
         onOpenSurahs={() => openSurahDrawer('surahs')}
         isZenMode={isZenMode}
-        onToggleZenMode={() => setIsZenMode(!isZenMode)}
+        onToggleZenMode={() => useReaderStore.getState().toggleZenMode()}
         isFullScreen={isFullScreen}
         onToggleFullScreen={handleToggleFullScreen}
         showFullScreenButton={Capacitor.isNativePlatform()}
@@ -369,6 +383,7 @@ export default function Quran() {
         onPositionUpdate={handlePositionUpdate}
         onScrollFinished={handleScrollFinished}
         autoScrollSpeed={autoScrollSpeed}
+        autoScrollTimer={autoScrollTimer}
         isAutoScrolling={isAutoScrolling}
         onToggleAutoScroll={() => setIsAutoScrolling((running) => !running)}
       />
@@ -385,9 +400,14 @@ export default function Quran() {
         theme={theme}
         onToggleTheme={handleToggleTheme}
         autoScrollSpeed={autoScrollSpeed}
-        onIncreaseAutoScrollSpeed={() => setAutoScrollSpeed((speed) => (speed + 1) % 6)}
+        // Tapping the speed button switches back to manual speed control.
+        onIncreaseAutoScrollSpeed={() => { setAutoScrollTimer(null); setAutoScrollSpeed((speed) => (speed + 1) % 6); }}
         isAutoScrolling={isAutoScrolling}
         onToggleAutoScroll={() => setIsAutoScrolling((running) => !running)}
+        autoScrollTimerMinutes={autoScrollTimer?.minutes || 0}
+        isCoveredByWindow={isKhatmaOpen}
+        onStartScrollTimer={handleStartScrollTimer}
+        onStopScrollTimer={handleStopScrollTimer}
         recitation={recitation}
       />
 

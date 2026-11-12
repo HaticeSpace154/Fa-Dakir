@@ -54,11 +54,23 @@
   background: linear-gradient(160deg, #eceeef, #dfe3e6);
   box-shadow: inset 0 0 0 4px rgba(96, 106, 116, 0.045), 0 6px 20px rgba(5, 17, 30, 0.1);
 }
+[data-theme="graphite"] .mushaf-font-page-content {
+  color: #474747;
+  border-color: rgba(119,119,119, 0.2);
+  background: linear-gradient(160deg, #eeeeee, #e2e2e2);
+  box-shadow: inset 0 0 0 4px rgba(119,119,119, 0.045), 0 6px 20px rgba(30,30,30, 0.1);
+}
 [data-theme="grey"] .mushaf-font-page-content {
   color: #343a40;
   border-color: rgba(96, 106, 116, 0.2);
   background: linear-gradient(160deg, #eceeef, #dfe3e6);
   box-shadow: inset 0 0 0 4px rgba(96, 106, 116, 0.045), 0 6px 20px rgba(45, 52, 58, 0.08);
+}
+[data-theme="green"] .mushaf-font-page-content {
+  color: #294131;
+  border-color: rgba(79,123,94, 0.2);
+  background: linear-gradient(160deg, #e3ede7, #d6e5db);
+  box-shadow: inset 0 0 0 4px rgba(79,123,94, 0.045), 0 6px 20px rgba(36,57,43, 0.08);
 }
 .mushaf-font-page-content.warsh .ayah-span {
   font-family: 'AalMaghribi', serif !important;

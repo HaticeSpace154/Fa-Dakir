@@ -43,7 +43,7 @@ export default function App() {
   return (
     <>
       <Quran />
-      <Toaster position="top-center" theme={appTheme === 'dark' || appTheme === 'pigeon-blue' ? 'dark' : 'light'} dir="rtl" richColors closeButton />
+      <Toaster position="top-center" theme={appTheme === 'dark' || appTheme === 'pigeon-blue' || appTheme === 'graphite' ? 'dark' : 'light'} dir="rtl" richColors closeButton />
       <AnimatePresence>
         {showSplash && <AppSplash key="app-splash" />}
       </AnimatePresence>
