@@ -417,10 +417,10 @@ export default function PureQuranReader({
       onDoubleClick={viewMode === 'surah' ? handleAutoScrollDoubleClick : undefined}
       dir="rtl"
     >
-      <button type="button" className="reader-edge-nav reader-edge-nav-prev" onClick={() => viewMode === 'page' ? navigateMushafChevron('left') : navigateReaderStep(-1)} aria-label={viewMode === 'page' ? 'الصفحة التالية' : 'السورة السابقة'} title={viewMode === 'page' ? 'الصفحة التالية' : 'السورة السابقة'}>
+      <button type="button" className="reader-edge-nav reader-edge-nav-prev" onClick={() => viewMode === 'page' ? navigateMushafChevron('left') : navigateReaderStep(1)} aria-label={viewMode === 'page' ? 'الصفحة التالية' : 'السورة التالية'} title={viewMode === 'page' ? 'الصفحة التالية' : 'السورة التالية'}>
         <ChevronLeft size={19} />
       </button>
-      <button type="button" className="reader-edge-nav reader-edge-nav-next" onClick={() => viewMode === 'page' ? navigateMushafChevron('right') : navigateReaderStep(1)} aria-label={viewMode === 'page' ? 'الصفحة السابقة' : 'السورة التالية'} title={viewMode === 'page' ? 'الصفحة السابقة' : 'السورة التالية'}>
+      <button type="button" className="reader-edge-nav reader-edge-nav-next" onClick={() => viewMode === 'page' ? navigateMushafChevron('right') : navigateReaderStep(-1)} aria-label={viewMode === 'page' ? 'الصفحة السابقة' : 'السورة السابقة'} title={viewMode === 'page' ? 'الصفحة السابقة' : 'السورة السابقة'}>
         <ChevronRight size={19} />
       </button>
       {viewMode === 'surah' && (
