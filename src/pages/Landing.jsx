@@ -36,7 +36,7 @@ export default function Landing() {
           <p>تجربة هادئة لقراءة القرآن بسبع روايات، وحفظ موضعك، وتنظيم وردك اليومي.</p>
           <div className="landing-actions">
             <MovingBorderLink className="landing-cta landing-cta-web" href="/reader"><BookOpen size={19} /><span>اقرأ على الويب</span><ArrowLeft size={17} /></MovingBorderLink>
-            <a className="landing-cta landing-cta-download" href="https://github.com/HaticeSpace154/Fa-Dakir/releases/download/v1.0.0/Fa-Dakir_v1.0.0.apk" download><Download size={19} /><span>حمّل تطبيق أندرويد</span><small>APK</small></a>
+            <a className="landing-cta landing-cta-download" href="https://github.com/HaticeSpace154/Fa-Dakir/releases/download/v.1.0.1/fa-dakir.apk" download><Download size={19} /><span>حمّل تطبيق أندرويد</span><small>APK</small></a>
           </div>
           <a className="landing-scroll-hint" href="#try-reader"><span>جرّب المصحف بالأسفل</span><ArrowDownLeft size={15} /></a>
         </motion.div>
