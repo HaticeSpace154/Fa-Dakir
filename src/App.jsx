@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence } from 'motion/react';
-import { Toaster } from 'sonner';
+import { Toaster, toast } from 'sonner';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Capacitor } from '@capacitor/core';
+import { isFocusLockedNow } from './services/focusLockService';
 import Quran from './pages/Quran';
 import AppSplash from './components/AppSplash';
 
@@ -28,6 +29,11 @@ export default function App() {
     if (!Capacitor.isNativePlatform()) return undefined;
     let listener;
     CapacitorApp.addListener('backButton', () => {
+      // Focus lock: swallow the back button until the chosen goal is done.
+      try {
+        const khatma = JSON.parse(localStorage.getItem('quranWarsh.khatma') || '{}');
+        if (isFocusLockedNow(khatma)) { toast('وضع التركيز مفعّل — أتمم هدفك أولًا، أو اضغط مطولًا على «خروج».'); return; }
+      } catch { /* fall through */ }
       const fullModeReader = document.querySelector('.quran-pure-app.is-full-mode.is-native-app');
       if (fullModeReader) {
         window.dispatchEvent(new Event('reader:exit-full-mode'));

@@ -1,0 +1,37 @@
+.focus-lock-overlay { background: rgba(13,12,10,.54); backdrop-filter: blur(7px); }
+.focus-lock-dialog { width: min(100%, 400px); max-height: min(88vh, 640px); overflow-y: auto; padding: 20px; border: 1px solid color-mix(in srgb, var(--gold) 32%, transparent); border-radius: 22px; background: var(--card-bg, #fbf8f0); color: var(--ink, #343027); box-shadow: 0 24px 70px rgba(0,0,0,.28); }
+.focus-lock-head { display: flex; align-items: center; justify-content: space-between; }
+.focus-lock-head > div { display: flex; align-items: center; gap: 9px; color: var(--gold); }
+.focus-lock-head h2 { margin: 0; font-size: 17px; color: inherit; }
+.focus-lock-head button { display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: inherit; cursor: pointer; }
+.focus-lock-intro { margin: 12px 0 14px; font-size: 12px; line-height: 1.8; opacity: .7; }
+.focus-lock-options { display: grid; gap: 8px; }
+.focus-lock-option { display: flex; align-items: center; gap: 12px; padding: 12px 14px; text-align: start; border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); border-radius: 14px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.focus-lock-option span { display: grid; gap: 2px; }
+.focus-lock-option strong { font-size: 14px; }
+.focus-lock-option small { font-size: 11px; opacity: .65; }
+.focus-lock-option.is-selected { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 16%, transparent); }
+.focus-lock-presets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+.focus-lock-presets button { padding: 10px 0; border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); border-radius: 12px; background: transparent; color: inherit; font: inherit; font-weight: 700; cursor: pointer; }
+.focus-lock-presets button.is-selected { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 20%, transparent); }
+.focus-lock-actions { display: grid; gap: 8px; margin-top: 16px; }
+.focus-lock-actions button { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 14px; font: inherit; font-weight: 700; cursor: pointer; }
+.focus-lock-start { border: 0; background: var(--gold); color: #21190a; }
+.focus-lock-start:disabled { opacity: .45; cursor: not-allowed; }
+.focus-lock-cancel { border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); background: transparent; color: inherit; }
+
+/* Banner shown while the lock is active. */
+.focus-lock-banner { position: fixed; z-index: 30; top: max(10px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; max-width: calc(100vw - 24px); padding: 7px 12px; border-radius: 999px; background: color-mix(in srgb, var(--card-bg, #fbf8f0) 94%, transparent); color: var(--ink); border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); box-shadow: 0 6px 22px rgba(0,0,0,.18); font-size: 12px; font-weight: 700; backdrop-filter: blur(8px); }
+.focus-lock-banner svg { color: var(--gold); flex: none; }
+.focus-lock-banner .focus-lock-release { position: relative; overflow: hidden; padding: 4px 10px; border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); border-radius: 999px; background: transparent; color: inherit; font: inherit; font-size: 11px; cursor: pointer; user-select: none; touch-action: none; }
+.focus-lock-release i { position: absolute; inset: 0 auto 0 0; width: 0; background: color-mix(in srgb, var(--gold) 45%, transparent); }
+.focus-lock-release.is-holding i { width: 100%; transition: width 3s linear; }
+
+.focus-lock-option:disabled { opacity: .45; cursor: not-allowed; }
+.focus-lock-wirds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.focus-lock-wirds button { padding: 8px 12px; border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); border-radius: 999px; background: transparent; color: inherit; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+.focus-lock-wirds button.is-selected { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 20%, transparent); }
+.focus-lock-stepper { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 14px; direction: ltr; }
+.focus-lock-stepper button { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); border-radius: 50%; background: transparent; color: inherit; cursor: pointer; }
+.focus-lock-stepper input { width: 76px; padding: 8px 0; text-align: center; border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); border-radius: 12px; background: transparent; color: inherit; font: inherit; font-size: 20px; font-weight: 800; }
+.focus-lock-stepper span { font-size: 13px; opacity: .7; }

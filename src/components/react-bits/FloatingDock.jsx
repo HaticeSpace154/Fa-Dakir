@@ -12,6 +12,7 @@ import {
   Hourglass,
   Download,
   Languages,
+  Lock,
   Palette,
   ScrollText,
   Timer,
@@ -39,6 +40,8 @@ export default function FloatingDock({
   autoScrollSpeed = 0,
   onIncreaseAutoScrollSpeed,
   isAutoScrolling = false,
+  onOpenFocusLock,
+  isFocusLocked = false,
   onToggleAutoScroll,
   autoScrollTimerMinutes = 0,
   isCoveredByWindow = false,
@@ -226,6 +229,9 @@ export default function FloatingDock({
             <span className={`dock-icon speed-icon ${isAutoScrolling ? 'is-running' : ''}`}><Gauge size={21} strokeWidth={1.8} /><span className="reader-speed-badge">{autoScrollSpeed + 1}</span></span>
             <span className="dock-label">السرعة · {autoScrollSpeed + 1}/6</span>
           </button>}
+          <button type="button" className={`dock-item dock-mobile-secondary ${isFocusLocked ? 'is-active' : ''}`} onClick={onOpenFocusLock} disabled={isFocusLocked} title="وضع التركيز: ابقَ حتى تُنهي هدفك" aria-label="وضع التركيز">
+            <Lock size={18} /><span className="dock-label">تركيز</span>
+          </button>
           {viewMode !== 'page' && !isTimedRunning && <button type="button" className={`dock-item dock-mobile-text-control ${autoScrollTimerMinutes > 0 ? 'is-active' : ''}`} onClick={() => setIsScrollTimerOpen(true)} title="تمرير تلقائي بمدة محددة" aria-label={autoScrollTimerMinutes > 0 ? `مؤقت التمرير، ${autoScrollTimerMinutes} دقيقة` : 'ضبط مؤقت التمرير التلقائي'}>
             <span className="dock-icon scroll-timer-icon"><Hourglass size={19} strokeWidth={1.8} />{autoScrollTimerMinutes > 0 && <span className="reader-speed-badge">{autoScrollTimerMinutes}</span>}</span>
             <span className="dock-label">{autoScrollTimerMinutes > 0 ? `${autoScrollTimerMinutes} د` : 'مؤقت'}</span>

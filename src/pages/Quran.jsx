@@ -35,6 +35,10 @@ const KhatmaDashboard = lazy(() => import('../components/KhatmaDashboard'));
 const SearchModal = lazy(() => import('../components/SearchModal'));
 const StatisticsModal = lazy(() => import('../components/StatisticsModal'));
 const AccountModal = lazy(() => import('../components/AccountModal'));
+import FocusLockModal from '../components/FocusLockModal';
+import FocusLockBanner from '../components/FocusLockBanner';
+import './../components/FocusLockModal.css';
+import { getFocusLock, setFocusLock, clearFocusLock, isFocusLockSatisfied } from '../services/focusLockService';
 const RecitationModal = lazy(() => import('../components/RecitationModal'));
 
 const APP_THEMES = ['light', 'sepia', 'pigeon-blue', 'grey', 'green', 'graphite', 'dark'];
@@ -105,6 +109,39 @@ export default function Quran() {
   const [bookmarks, setBookmarks] = useState(getBookmarks);
   const [recitation, setRecitation] = useState(getStoredRecitation);
   const [khatmaData, setKhatmaData] = useState(getKhatmaProgress);
+  // Optional focus lock: keeps the reader in the app until the chosen goal (wird / khatma / countdown) is finished.
+  const [focusLock, setFocusLockState] = useState(getFocusLock);
+  const [isFocusLockOpen, setIsFocusLockOpen] = useState(false);
+  const customLockSeenRef = useRef(false);
+  // Custom-wird lock: lifts when the custom wird sequence finishes (or if it is no longer running, e.g. after a reload).
+  useEffect(() => {
+    if (focusLock?.mode !== 'custom') return undefined;
+    if (isCustomWirdActive) { customLockSeenRef.current = true; return undefined; }
+    const id = setTimeout(() => {
+      clearFocusLock();
+      if (customLockSeenRef.current) toast.success('أحسنت! أتممت وردك المخصص، وتم إنهاء وضع التركيز.');
+    }, customLockSeenRef.current ? 0 : 1500);
+    return () => clearTimeout(id);
+  }, [focusLock, isCustomWirdActive]);
+  useEffect(() => {
+    const sync = () => setFocusLockState(getFocusLock());
+    window.addEventListener('focuslock:changed', sync);
+    return () => window.removeEventListener('focuslock:changed', sync);
+  }, []);
+  useEffect(() => {
+    if (!focusLock) return undefined;
+    const check = () => {
+      if (isFocusLockSatisfied(focusLock, getKhatmaProgress())) {
+        clearFocusLock();
+        toast.success('أحسنت! أتممت هدفك، وتم إنهاء وضع التركيز.');
+      }
+    };
+    check();
+    const id = setInterval(check, 1000);
+    const warn = (event) => { event.preventDefault(); event.returnValue = ''; };
+    window.addEventListener('beforeunload', warn);
+    return () => { clearInterval(id); window.removeEventListener('beforeunload', warn); };
+  }, [focusLock, khatmaData]);
 
   // Modals state
   const [isSurahDrawerOpen, setIsSurahDrawerOpen] = useState(false);
@@ -388,10 +425,15 @@ export default function Quran() {
         onToggleAutoScroll={() => setIsAutoScrolling((running) => !running)}
       />
 
+      <FocusLockBanner lock={focusLock} khatma={khatmaData} onRelease={() => { clearFocusLock(); toast('تم إنهاء وضع التركيز.'); }} />
+      {isFocusLockOpen && <FocusLockModal isOpen={isFocusLockOpen} onClose={() => setIsFocusLockOpen(false)} khatma={khatmaData} onStart={(lock, sequence) => { customLockSeenRef.current = false; setFocusLock(lock); if (sequence?.length) handleStartCustomWird(sequence); toast.success('تم تفعيل وضع التركيز.'); }} />}
+
       {/* React Bits: Animated Floating Bottom Command Dock */}
       <FloatingDock
         onOpenSurahDrawer={() => openSurahDrawer('surahs')}
         onOpenKhatma={() => setIsKhatmaOpen(true)}
+        onOpenFocusLock={() => setIsFocusLockOpen(true)}
+        isFocusLocked={Boolean(focusLock)}
         onOpenBookmarks={handleOpenBookmarks}
         onOpenRecitation={() => setIsRecitationOpen(true)}
         isCurrentPageBookmarked={readerViewMode === 'page' && bookmarks.some((bookmark) => bookmark.type === 'mushaf-page' && Number(bookmark.page) === currentMushafPage && (bookmark.recitation || 'warsh') === recitation)}
