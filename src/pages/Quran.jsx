@@ -47,6 +47,15 @@ const THEME_BACKGROUNDS = {
 };
 
 function getInitialTheme() {
+  // URL override: ?theme=dark (or light/sepia/pigeon-blue/grey) forces a theme on any
+  // origin — useful to reproduce localhost's exact look on the deployed site.
+  try {
+    const requested = new URLSearchParams(window.location.search).get('theme');
+    if (requested && APP_THEMES.includes(requested)) {
+      setStoredTheme(requested);
+      return requested;
+    }
+  } catch { /* ignore */ }
   const storedTheme = getStoredTheme();
   if (APP_THEMES.includes(storedTheme)) return storedTheme;
   if (storedTheme === 'mono') return 'dark';

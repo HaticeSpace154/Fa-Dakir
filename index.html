@@ -16,8 +16,14 @@
          so a dark-mode user never sees a light flash. The reader keeps this in sync afterwards. -->
     <script>
       try {
-        var m = localStorage.getItem('quranWarsh.theme');
+        var urlTheme = null;
+        try { urlTheme = new URLSearchParams(window.location.search).get('theme'); } catch (e) {}
         var themes = { light: '#f9f6f0', sepia: '#f2e8d5', 'pigeon-blue': '#122b46', grey: '#e5e7e9', dark: '#0a0a0a', mono: '#0a0a0a' };
+        if (urlTheme && themes[urlTheme]) {
+          // ?theme=... forces the theme on this origin and persists it.
+          localStorage.setItem('quranWarsh.theme', urlTheme === 'mono' ? 'dark' : urlTheme);
+        }
+        var m = urlTheme && themes[urlTheme] ? (urlTheme === 'mono' ? 'dark' : urlTheme) : localStorage.getItem('quranWarsh.theme');
         if (themes[m]) {
           var themeName = m === 'mono' ? 'dark' : m;
           document.documentElement.setAttribute('data-theme', themeName);
